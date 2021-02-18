@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul">
+
+    </ul>
+    <script>
+        "use strict";
+
+        // create list from user input
+
+        let item;
+        
+        function ask() {
+            item = prompt('What goes in your list', '');
+        }
+
+        let ul = document.getElementById('ul');
+
+        ask();
+
+        while (item) {
+            let li = document.createElement('li');
+            li.innerHTML = item;
+            ul.append(li);
+
+            ask();
+        };
+
+
+
+
+    </script>
+</body>
+</html>
