@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Test</div>
+    <script>
+        "use strict";
+
+        // document width and height:
+        console.log(document.documentElement.clientWidth);
+        console.log(document.documentElement.clientHeight);
+            // these don't include scrollbar size which is good - we want the available window width
+
+        // the root document element is "document.documentElement" and it encloses all content
+        // however for historic reasons, scrollHeight/Width, clientHeight are stored in document.body:
+
+        console.log(document.body.scrollHeight);
+        console.log(document.body.clientHeight);
+
+
+        // Scrolling
+
+        // Get the current scroll - how far left or right you've scrolled
+        console.log(window.pageXOffset);
+        console.log(window.pageYOffset);
+        // can also use document.documetElement.scrollLeft/Top but this doesn't work in safari
+
+
+        // scrollTo, scrollBy, scrollIntoView, scrollTop/Left
+            // these will scroll for you
+
+        // but window.scrollBy(x, y) and window.scrollTo(pageX, pageY) are simpler and scorll to coordinates in pixels
+
+        // elem.scorllIntoView(top)
+            // when top=true (the default), page will be scrolled so elem is at the top of the screen
+            // when top=false, the page will be scrolled so elem is at the bottom of the screen
+
+
+        // Prevent scrolling
+            // set document.body.style.overflow = 'hideen'
+            // to allow scrolling again, document.body.style.overflow = ''
+
+    </script>
+</body>
+</html>

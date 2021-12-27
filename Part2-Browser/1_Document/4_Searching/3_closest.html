@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Contents</h1>
+
+    <div class='contents'>
+        <ul class='book'>
+            <li class='chapter'>Chapter 1</li>
+            <li class='chapter'>Chapter 2</li>
+        </ul>
+    </div>
+
+    <script>
+        "use strict"
+
+        // elem.closest(css) looks for the nearest ancestor that matches the CSS-selector
+            // the elem itself is also included in the search
+            // Ancestors are paret, parent of a parent, etc
+            // elem.closest(css) goes up the chain and checks each parent
+
+        let chapter = document.querySelector('.chapter');   // classes in css start with "."
+
+        console.log(chapter.closest('.book'));
+        console.log(chapter.closest('h1'));     // null b/c <h1> is not an ancestor
+
+    </script>
+</body>
+</html>

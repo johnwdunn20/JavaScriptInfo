@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div"></div>
+
+    <script>
+        "use strict";
+
+        // insertAdjacentHTML/Text/Element
+        // the previous insertion methods don't let us insert a string as html with all the tags working
+        // we can do that (just like we can with innerHTML) with insertAdjacentHTML/Text/Element
+
+        // elem.insertAdjacentHTML(where, html)
+            // "where" parameter specifies where to insert relative to elem
+            // Must be one of:
+                // "beforebegin" – insert html immediately before elem,
+                // "afterbegin" – insert html into elem, at the beginning,
+                // "beforeend" – insert html into elem, at the end,
+                // "afterend" – insert html immediately after elem
+        
+        let div = document.getElementById('div');
+        div.insertAdjacentHTML('beforebegin', '<p>Hello</p>');
+        div.insertAdjacentHTML('afterend', '<p>Bye</p>')
+
+        // elem.insertAdjacentText(where, text) inserts text 
+        // elem.inserAdjacetElement(where, text) inserts an element
+            // these are rarely used
+    
+        div.insertAdjacentElement('br');
+    
+    </script>
+</body>
+</html>

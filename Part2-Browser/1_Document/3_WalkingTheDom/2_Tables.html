@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table id="table">
+        <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+        <tr>
+            <td>three</td>
+            <td>four</td>
+        </tr>
+
+        <script>
+            "use strict"
+            // previously, we only works with basic navigation elements
+            // some DOM elements also have additional properties
+
+            // Table Ex:
+
+            let td = table.rows[0].cells[1];
+            td.style.backgroundColor = 'red';
+
+            // "rows" and "cells" are properties specific to the <table> element
+
+
+            // for a given DOM node, we can go to its neighbors using additional navigation properties
+            // there are 2 main sets:
+            // for all nodes: parentNode, childNodes, firstChild, lastChild, previousSibling, nextSiblng
+            // for element nodes only: parentElement, children, firstElementChild, lastElementChild, previousElementSibling, nextElementSibling
+
+        </script>
+    </table>
+</body>
+</html>

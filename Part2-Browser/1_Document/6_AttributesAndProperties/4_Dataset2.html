@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body data-about-this="Elephants"> 
+    
+
+    <script>
+        "use strict";
+
+        // the problem with custom attributes is that HTML is a growing language and our non-standard attribute may one day become standard
+        // therefore, all attributes starting with "data-" are reserved for programer's use
+        // they are available in the "dataset" property
+        // Ex:
+        console.log(document.body.dataset.aboutThis);   // Multiword attributes like "about-this" become camelcased to "aboutThis"
+
+        // so "data-*" is a safe way to pass custom data
+
+
+        // Attributes are what's written in the HMTL
+        // Properties are what's written in DOM objects
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .alert {
+            padding: 15px;
+            border: 1px solid #d6e9c6;
+            border-radius: 4px;
+            color: #3c763d;
+            background-color: #dff0d8;
+        }
+    </style>
+
+    <script>
+        "use strict";
+
+        // there are 2 methods to create DOM nodes:
+        let div = document.createElement('div');    // creates a new element node with the given tag
+
+        let textNode = document.createTextNode('Here I am');    // creates a new text node with the given text
+
+        // createElement is used much more frequently
+        // we already did the first step above
+        // then we set its class:
+        div.className = 'alert';
+
+        // then we fill it with content
+        div.innerHTML = '<strong>Hi there!</strong> You have read an important message';
+
+        // we've created the element, but it's not on the page yet. So we need insertion methods
+        // here, we'll insert it into the body element
+        document.body.append(div);
+
+
+        // we can use append on any element
+
+        // list of insertion methods that specify a different place to insert:
+        // node.append(...nodes or strings) – append nodes or strings at the end of node,
+        // node.prepend(...nodes or strings) – insert nodes or strings at the beginning of node,
+        // node.before(...nodes or strings) –- insert nodes or strings before node,
+        // node.after(...nodes or strings) –- insert nodes or strings after node,
+        // node.replaceWith(...nodes or strings) –- replaces node with the given nodes or strings.
+
+
+
+    </script>
+</body>
+</html>

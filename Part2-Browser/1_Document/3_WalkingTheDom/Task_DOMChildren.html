@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Users:</div>
+    <ul>
+      <li>John</li>
+      <li>Pete</li>
+    </ul>
+
+    <script>
+        "use strict";
+
+        // to acces the div node:
+        console.log(document.body.firstElementChild);
+        console.log(document.body.children[0]);     // only gets element children
+        console.log(document.body.childNodes[1])    // gets all children (elements, text, and comments)
+
+        // to access the ul node:
+        console.log(document.body.children[1]);
+
+        // to access the second li node:
+        console.log(document.body.children[1].children[1]);
+    </script>
+</body>
+</html>

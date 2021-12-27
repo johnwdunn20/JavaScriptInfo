@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="header1">My Header!</h1>
+    <h2 id="header2">Other header</h2>
+    
+    <script>
+        "use strict";
+
+        // JS uses 2 coordinate systems:
+            // 1. Relative to windwow: calculated from window top/left edge
+                // we denote these coordinates as clientX, clientY
+                // similar to "position: fixed"
+            // 2. Relative to document: calculated from the document top/left edge
+                // we deonate these coordinates in pageX, pageY
+                // similar to "position: absolute"
+
+
+        // these 2 coordinate systems are the same when the top/left corner of the window is exactly the same as the document top/left corner
+        // when the document is scrolled, window coordinates change, but document coordiantes remain the same
+
+
+
+        // elem.getBoundingClientRect() - returns window coordinates for a minimal rectangle that encloses elem
+            // coordinates can be negative if they're above the top of the page
+            // these coordinates are relative to the window
+
+        let header = document.getElementById('header1');
+        console.log(header.getBoundingClientRect());
+
+        // document.elementFromPoint(x, y) - returns the most nested element at window coordinates (x, y)
+            // I don't fully get this one
+
+        let centerX = document.documentElement.clientWidth / 2;
+        let centerY = document.documentElement.clientHeight / 2;
+
+        let elem = document.elementFromPoint(centerX, centerY);
+
+        elem.style.background = "red";
+        console.log(elem.tagName);
+
+
+        // fixed positioning
+    </script>
+</body>
+</html>

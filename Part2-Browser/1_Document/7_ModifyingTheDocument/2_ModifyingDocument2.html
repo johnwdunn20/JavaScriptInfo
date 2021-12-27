@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol id="ol">
+        <li>0</li>
+        <li>1</li>
+        <li>2</li>
+    </ol>
+
+    <script>
+        "use strict";
+
+        // list of insertion methods that specify a different place to insert:
+        // node.append(...nodes or strings) – append nodes or strings at the end of node,
+        // node.prepend(...nodes or strings) – insert nodes or strings at the beginning of node,
+        // node.before(...nodes or strings) –- insert nodes or strings before node,
+        // node.after(...nodes or strings) –- insert nodes or strings after node,
+        // node.replaceWith(...nodes or strings) –- replaces node with the given nodes or strings.
+
+        // we don't have to do this step; we could just use the id "ol" without getElementByID but I think this is cleaner
+        let ol = document.getElementById('ol');
+
+        ol.before('before');    // inserts before <ol>
+        ol.after('after');      // inserts after <ol>
+
+        let liFirst = document.createElement('li');
+        liFirst.innerHTML = 'prepend';
+        ol.prepend(liFirst);        // insert liFirst at the beginnng or our ordered list
+
+        let liLast = document.createElement('li');
+        liLast.innerHTML = 'append';
+        ol.append(liLast);
+
+        // these methods can insert multiple nodes and text pieces in a single call:
+
+        liLast.append(
+            document.createElement('br'),
+            document.createElement('br'),
+            '<p>Hello</p>',             // text is inserted as text, not as HTML so we see the p tags in our document
+            document.createElement('hr')
+            );
+
+    </script>
+</body>
+</html>

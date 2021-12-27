@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        /*styles rely on the custom attribute "order state" */
+        .order[order-state="new"] {
+            color: green;
+        }
+
+        .order[order-state="pending"] {
+            color: blue;
+        }
+
+        .order[order-state="canceled"] {
+            color: red;
+        }
+    </style>
+
+    <div class="order" order-state="new">A new order</div>
+
+    <div class="order" order-state="pending">A pending order</div>
+
+    <div class="order" order-state="canceled">A canceled order</div>
+
+    <br>
+
+    <div show-info="name"></div>
+
+    <div show-info="age"></div>
+
+    <script>
+        "use strict";
+
+        // sometimes non standard atttributes are used to mark HTML elements for JS
+
+        // Ex:
+
+        let user = {
+            name: 'Pete',
+            age: 25
+        };
+
+        for (let div of document.querySelectorAll('[show-info]')) {
+
+            // insert corresponding info into the field
+            let field = div.getAttribute('show-info');
+            div.innerHTML = user[field];    // first Pete into name, then 25 into age
+            
+        }
+
+
+        // non standard elements can also be used to style an element
+        // attributes are easier to manage than having seperate classes for each state
+        // they can be changed like:
+        let divCanceled = document.querySelector('[order-state=canceled]');
+
+        console.log(divCanceled);
+
+        divCanceled.setAttribute('order-state', 'pending');
+
+        console.log(divCanceled);
+
+
+    </script>
+</body>
+</html>

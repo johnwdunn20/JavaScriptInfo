@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>The</li>
+        <li>test</li>
+    </ul>
+    <ul>
+        <li>has</li>
+        <li>passed</li>
+    </ul>
+    <script>
+        "use strict";
+
+        // elem.querySelectorAll(css) returns all elements inside elem matching the given query selector
+        
+        // Ex: look for <li> elements that are the last children
+
+        let elements = document.querySelectorAll('ul > li:last-child');
+
+        for (let elem of elements) {
+            console.log(elem.innerHTML);
+        }
+
+        // this method is powerful because you can use any CSS selector inside it
+            // Need to learn more about CSS selectors
+            
+
+        // elem.querySelector(css) returns the first element of the given CSS selector
+            // is the same thing as elem.querySelector(css)[0]
+
+
+
+    </script>
+
+</body>
+</html>

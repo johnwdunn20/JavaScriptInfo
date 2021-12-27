@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            padding: 3px;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+            background-color: #E6E6E6;
+        }
+    </style>
+
+    <div id="container"></div>
+
+    <script>
+        "use strict";
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        function createCalendar(elem, year, month) {
+
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+            ];
+
+            const dayName = ["Sunday", "Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday"]
+
+            // create table
+            let table = document.createElement('table');
+            table.innerHTML = `${monthNames[month - 1]}, ${year}`;
+            elem.append(table);
+
+            // create headers
+            for (let day of dayName) {
+                let th = document.createElement('th');
+                th.innerHTML = day;
+                elem.append(th);
+            }
+
+            // create first row
+            let tr = document.createElement('tr');
+            elem.append(tr);
+
+            // add in blank cells
+            let inputtedDate = new Date(year, month - 1, 1);
+            let blankCells = inputtedDate.getDay();
+
+            for (let blanks = 0; blanks < blankCells; blanks++) {
+                let td = document.createElement('td');
+                elem.append(td);
+            }
+
+            // add in numbers
+            // steps:
+                // 1. Fill out rest of first row
+                // 2. Create next row
+                // 3. Fill out the next row
+                // 4. Repeat 2 & 3 until reach end of month
+                // 5. Fill in end of table
+            
+
+            // loop for all row
+            let counter = 0;
+            let endDate = new Date(year, month, 0);
+            let endDay = endDate.getDate();
+            
+            while(counter < 40) {
+
+                // loop for each row
+                for (let colNum = 0; colNum < 7; colNum++) {
+
+                    // only want to continue for first row with blaks
+                    if (counter == 0 && colNum < blankCells) {
+                        continue;
+                    } else if (counter >= endDay) {
+                        break;
+                    }
+
+                    let td = document.createElement('td');
+                    td.innerHTML = counter + 1;
+                    elem.append(td);
+                    
+                    counter++;
+                }
+
+                // break and make table square **Note: table being square doesn't work
+                if (counter >= endDay) {
+
+                    let cellsLeft = Math.ceil((blankCells+counter) / 7) * 7 - blankCells - counter;
+                    for (let i = 0; i <= cellsLeft; i++) {
+                        let td = document.createElement('td');
+                        elem.append(td);
+                        
+                    }
+                    break;
+                }
+
+                // add new row
+                let tr = document.createElement('tr');
+                elem.append(tr);
+            }
+
+        }
+
+        // call function
+        let container = document.getElementById('container');
+
+        // do this with prompts when everything's finalized
+        // add in error handling
+
+        createCalendar(container, 2012, 4);
+
+    </script>
+</body>
+</html>

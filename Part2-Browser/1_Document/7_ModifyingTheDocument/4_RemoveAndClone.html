@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .alert {
+            padding: 15px;
+            border: 1px solid #d6e9c6;
+            border-radius: 4px;
+            color: #3c763d;
+            background-color: #dff0d8;
+        }
+    </style>
+
+    <div id="first">First</div>
+    <div id="second">Second</div>
+
+    <script>
+        "use strict";
+
+        // to make our element disappear after a second
+
+        let div = document.createElement('div');
+        div.className = 'alert';
+        div.innerHTML = '<strong>Hi there!</strong>';
+
+        second.append(div);
+
+        setTimeout( () => div.remove(), 1000);
+
+        setTimeout( () => second.append(div), 2000);
+
+
+        // if we want to move an element we don't need to remove it from the old one
+        // all insertion methods automatically remove the node from the old place
+
+        setTimeout( () => second.after(first), 3000);
+
+
+
+        // cloneNode
+            // elem.cloneNode(true) creates a clone of the element with all attributes and subelements
+            // elem.cloneNode(false) creates a clone without child elements
+
+        let div2 = div.cloneNode(true);
+
+        div2.innerHTML = '<strong>By there!</strong>';
+
+        div.after(div2);
+    </script>
+</body>
+</html>

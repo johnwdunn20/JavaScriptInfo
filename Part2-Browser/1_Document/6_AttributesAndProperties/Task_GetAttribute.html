@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div data-widget-name="menu">Choose the genre</div>
+
+    <script>
+        "use strict";
+
+        let widget = document.querySelector('[data-widget-name]')
+
+        console.log(widget.textContent);   // textContent gets the text content of the element and ALL child elements
+
+        console.log(widget.innerHTML);     // innerHTML gets all HTML content (includes tags, classes, etc) inside the elements
+
+        console.log(widget.innerText); // innerText gets the text contents of the element and the human-readable elements (so not <script>, <style>)
+
+        
+        console.log('\n');
+        // to get the value of the data widget:
+
+        console.log(widget.dataset.widgetName);
+
+        console.log(widget.getAttribute('data-widget-name'));
+    </script>
+</body>
+</html>

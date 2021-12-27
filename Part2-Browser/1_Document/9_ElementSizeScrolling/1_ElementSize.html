@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="example">
+        ...Text...
+    </div>
+    <style>
+        #example {
+            width: 300px;
+            height: 200px;
+            border: 25px solid #E8C48F;
+            padding: 20px;
+            overflow: auto;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+    </style>
+
+    <script>
+        "use strict";
+
+        let example = document.getElementById('example');
+
+        // see picture on the website for an explanation of all thee terms
+
+        // padding is the space between the border's inside wall and the text
+        // overflow in CSS used to add scrollbars. Auto adds the scrollbar only when necessary
+
+
+        // offsetParent and offsetLeft/Top
+            // outer geometry of an element
+        
+        console.log(example.offsetLeft)
+            // note: elements with fixed position have null offset values
+
+        
+        // offsetWidth/Height
+            // now in the element itself - go from one end to another
+            // these are the outer width/height of the element as a whole
+
+        console.log(example.offsetWidth);   // border + padding + content width + padding +scrollbar + border
+
+
+        //clientTop/Left
+            // top and side border
+        console.log(example.clientTop);
+
+
+        // clientWidth/Height
+            // the size of the content inside the border
+                // includes padding
+        console.log(example.clientWidth);
+
+
+        // scrollWidth/Height
+            // size of content inside the border, includes any scrolled out parts
+
+        // can be used to expand the element to its full width/height
+
+        example.style.height = `${example.scrollHeight}`;
+        
+
+        // these are better than getComputedStyle(elem).width, for example, to get CSS heigh/width because width/heigh may be "auto" and JS needs an exact size in px to use in calculations
+
+
+        //Summary
+            //offsetParent – is the nearest positioned ancestor or td, th, table, body.
+            // offsetLeft/offsetTop – coordinates relative to the upper-left edge of offsetParent.
+            // offsetWidth/offsetHeight – “outer” width/height of an element including borders.
+            // clientLeft/clientTop – the distances from the upper-left outer corner to the upper-left inner (content + padding) corner. For left-to-right OS they are always the widths of left/top borders. For right-to-left OS the vertical scrollbar is on the left so clientLeft includes its width too.
+            // clientWidth/clientHeight – the width/height of the content including paddings, but without the scrollbar.
+            // scrollWidth/scrollHeight – the width/height of the content, just like clientWidth/clientHeight, but also include scrolled-out, invisible part of the element.
+            // scrollLeft/scrollTop – width/height of the scrolled out upper part of the element, starting from its upper-left corner.
+            // All properties are read-only except scrollLeft/scrollTop that make the browser scroll the element if changed.
+    </script>
+</body>
+</html>

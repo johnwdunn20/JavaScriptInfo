@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        "use strict";
+
+        // 4 DOM Node classes, in order:
+            // 1. EventTarget
+            // 2. Node
+            // 3. Element - the base for DOM elements. provivides element-level navigation like nextElementSibling, children, etc
+                // also serves as the basis for XML
+            // 4. HTMLElement - inherited by concrete elements
+                // each tag has its own class that may have specific properties and methods
+
+        // Ex: <input> inherits from HTMLElement so it inherits from all 4
+
+        // DOM nodes are regular JS objects that use prototype-based classes for inhertience
+
+
+        // for a given DOM node:
+        console.log(document.body.nodeName);    // nodeName exists for all nodes
+        console.log(document.body.tagName);     // tagName exissts only for Elemenet nodes
+    </script>
+</body>
+</html>

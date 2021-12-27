@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // the root object is window
+        // window has 2 roles:
+            // 1. global object for JS code
+            // 2. it represents the broswer window and provides methods to control it
+
+        // using window as a global object:
+
+        function sayHi() {
+            console.log('Hello');
+        }
+
+        window.sayHi();
+
+        // using window as a browser window, to see window height
+
+        console.log(window.innerHeight);
+
+
+        console.log('\n');
+        // DOM - Document Object Model
+
+        // document object is the main entry point to the page - we can change or create anything on the page using it:
+
+        document.body.style.background = 'red';
+
+        // DOM isn't just for broswers - non-browser environments can use DO too
+
+
+        console.log('\n');
+        // BOM - Broswer Object Model
+        // represents additional objects provided by the broswer (host environment) for working with everything except the doucment
+        // Ex:
+        
+        // navigator - object that provides background info about the broswer and operating system
+        console.log(navigator.platform);
+        console.log(navigator.userAgent);
+
+        // location - object that allows us to read the current url and can redirect the broswer to a new one
+        alert(location.href);
+        if (confirm('Go to Wikipedia')) {
+            location.href = 'https://wikipedia.org';    // redirecting to wikipedia
+        }
+
+        // functions alert/confirm/prompt are also part of the BOM
+
+        // BOM is part of the general HTML specification
+            // includes various broswer functions like setTimeout, alert, location, etc
+
+
+    </script>
+</body>
+</html>

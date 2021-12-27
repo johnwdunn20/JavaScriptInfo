@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="news">
+        <h1>Headline!</h1>
+        <p>Martians attack people</p>
+    </div>
+
+    <div id="elem">[name here]</div>
+
+    <div id="elem2">Blinking Element</div>
+
+    <script>
+        "use strict";
+        
+        // textContent - accesses the text inside an element
+
+        console.log(news.textContent);
+
+
+        // writing to textContent is much safer:
+
+        let name = prompt('What is your name?','Enter your name here');
+
+        elem.textContent = name;
+
+
+        // there's also a hidden property:
+        setInterval(() => elem2.hidden = !elem2.hidden, 1000);
+
+    </script>
+</body>
+</html>

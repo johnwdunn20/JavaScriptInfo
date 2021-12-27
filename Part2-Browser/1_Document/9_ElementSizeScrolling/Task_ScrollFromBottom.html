@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #text {
+            height: 100px;
+            width: 100px;
+            overflow: auto;
+            border: 10px solid red;
+        }
+    </style>
+
+    <button type="button" onclick="SeeHiddenTop()">See Hidden Top</button>
+    <p id="text">
+        Let's <br>
+        have <br>
+        a <br>
+        multi <br>
+        line <br>
+        sentence <br>
+        for <br>
+        this <br>
+        example <br>
+
+    </p>
+    <script>
+        "use strict";
+
+        // gets the size of the scrolled out part
+        function SeeHiddenTop() {
+            let text = document.getElementById('text');
+
+            console.log(text.scrollHeight - text.scrollTop - text.clientHeight);
+        }
+
+        SeeHiddenTop();
+    </script>
+</body>
+</html>

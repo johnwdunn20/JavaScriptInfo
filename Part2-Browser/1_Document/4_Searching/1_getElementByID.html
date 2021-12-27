@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='elem'>
+        <div id="elem-content">Element</div>
+    </div>
+    
+
+    <script>
+        "use strict";
+
+        // document.getElementByID - used when an element has the id atribute (html ids must be uniqure)
+            // can only be called on document, can't use anyElement.getElementByID
+
+        // getting the element:
+        let elem = document.getElementById('elem');
+
+        // make its background red:
+        elem.style.background = 'red';
+
+
+    </script>
+</body>
+</html>

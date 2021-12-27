@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #hours {
+            color: red;
+        }
+
+        #minutes {
+            color: green;
+        }
+
+        #seconds {
+            color: blue;
+        }
+    </style>
+    
+    <div id="clock">
+        <p>
+            <span id="hours"></span>
+            <span class="semicolon">:</span>
+            <span id="minutes"></span>
+            <span class="semicolon">:</span>
+            <span id="seconds"></span>
+        </p>
+    </div>
+
+
+    <input type="button" onclick="clockStart()" value="Start">
+    <input type="button" onclick="clockStop()" value="Stop">
+
+
+    <script>
+        "use strict";
+
+        // steps
+            // 1. Start on initial load
+            // 2. setInterval
+            // 3. clockStop
+                // store html
+                // clearInterval - need to also clear the clockStart setInterval
+            // 4. clockStart
+                // start from the stored html values
+                // setInterval
+            
+        let runTimer;
+        let stop;
+
+        function updateTime(newDate) {
+
+            let currentDate = new Date();
+
+            let hours = document.getElementById('hours')
+            hours.innerHTML = currentDate.getHours();
+
+            let minutes = document.getElementById('minutes')
+            minutes.innerHTML = currentDate.getSeconds();
+
+            let seconds = document.getElementById('seconds');
+            seconds.innerHTML = currentDate.getSeconds()
+
+        }
+
+        runTimer = setInterval(updateTime, 500);
+
+        let counter;
+
+        function clockStart(newSeconds = 0) {
+
+            let hours = document.getElementById('hours')
+            let minutes = document.getElementById('minutes')
+            let seconds = document.getElementById('seconds');
+
+            let newDate = new Date(0,0,0,hours.innerHTML, minutes.innerHTML, seconds.innerHTML + newSeconds);
+
+            hours.innerHTML = newDate.getHours();
+            minutes.innerHTML = newDate.getMinutes();
+            seconds.innerHTML = newDate.getSeconds();
+
+            counter = 0
+            while (counter > 0) {
+                runTimer = setInterval(clockStart(counter), 500)
+                counter++;
+                if (counter > 10) {
+                    break;
+                }
+            }
+            
+            console.log('start');
+        }
+
+        function clockStop() {
+            clearInterval(runTimer);
+            counter = -1;
+
+            console.log('stop');
+        }
+
+
+        
+    </script>
+
+
+</body>
+</html>

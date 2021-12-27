@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Adding html here for the script to work with-->
+    <div>Begin</div>
+
+    <ul>
+        <li>Information1</li>
+        <li>Information2</li>
+    </ul>
+
+    <div>End</div>
+    <script>
+        "use strict";
+
+        // in the DOM tree, the top most elements are directly available as document properties:
+        // <html> = document.documentElement
+        // <body> = document.body
+        // <head> = document.head
+        
+        // note: a script can't access an element that doesn't exist in the moment. Remeber JS is an interpretted language, not a compiled one
+
+        // Child nodes (aka children) - elements that are direct children. aka they are nested exactly in the give one
+        // Descendants - all elements that are nested in the given one, including children and their children
+
+        // this will only read the stuff above it. If there's anything below the script tag, it won't read it
+        for (let i = 0; i< document.body.childNodes.length; i++) {
+            console.log(document.body.childNodes[i])
+        }
+
+        console.log('\n');
+
+        // Properties "firstChild" and "lastChild" give fast access to the first and last nodes
+        // elem.hasChildNotes() will check if there are any child nodes
+        // here elem is a given element of the document??? and could be the document as a whole??
+
+        
+        console.log('\n');
+        // DOM collections
+        console.log(document.body.childNodes);
+        // childNodes look like an array are not - but ar a "collection" - a special array-like iterable
+        // we can iterate over it with for..of, but array methods don't work because it's not an array
+            // don't use for..in b/c collections have extra, rarely used properties
+
+        // all navigation properties are read-only
+        // DOM collections are live (with a few minor exceptions) - they reflect the current state of the DOM
+
+
+        // Siblings are nodes that are children of the same parent
+        console.log(document.head.nextSibling);
+            // we have nextSibling and previousSibling but relative to what??
+
+
+
+        // Navigation properties (examples above) refer to all nodes(text, elements, commnents)
+        // we can access just element nodes that form the form the structure of the page with documentElement
+        console.log(document.body.firstElementChild);
+        console.log(document.head.nextElementSibling);
+
+        for (let elem of document.body.children) {
+            console.log(elem);
+        }
+
+
+    </script>
+</body>
+</html>

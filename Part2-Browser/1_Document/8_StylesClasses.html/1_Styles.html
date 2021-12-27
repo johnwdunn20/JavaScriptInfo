@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="div">Text here</div>
+
+    <script>
+        "use scrict";
+
+        // 2 ways to add styles:
+            // 1. Create a class in CSS and add that class to your element (preffered way)
+            // 2. write properties directly into style: "<div style = "..." "
+
+        // JS can modify both classes and style properties
+
+        // elem.className corresponds to the element's class property
+            // can be used to update a class, but it replaces the whole string of classes (elemnts can have multiple classes)
+
+        // elem.classList is used to add or remove a single class
+        // has methods:
+            // elem.classList.add/remove("class") – adds/removes the class.
+            // elem.classList.toggle("class") – adds the class if it doesn’t exist, otherwise removes it.
+            // elem.classList.contains("class") – checks for the given class, returns true/false.
+        // classList is iterable with for..of
+
+        let div = document.getElementsByClassName('div')[0];
+
+        for (let name of div.classList) {
+            console.log(name);
+        }
+
+        
+        console.log('\n');
+        // Element style
+            // sets the style attribute
+
+        div.style.backgroundColor = 'grey';
+        div.style.color = 'blue'
+
+        // removes the style attribute
+        div.style.backgroundColor = '';
+
+
+        // need to add CSS units
+        div.style.margin = '1em';
+
+
+        // we can't read from elem.style
+        // to get a property we use getComputedStyle(div, [psuedo])
+
+        let myStyle = getComputedStyle(div );
+        console.log(myStyle);
+        
+
+    </script>
+</body>
+</html>
