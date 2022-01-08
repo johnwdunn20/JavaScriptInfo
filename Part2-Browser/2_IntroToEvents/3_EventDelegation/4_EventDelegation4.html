@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button data-toggle-id="subscribe-mail">
+        Show the subscription form
+    </button>
+    
+    <form id="subscribe-mail" hidden>
+        Your mail: <input type="email">
+    </form>
+      
+    <script>
+        "use strict";
+
+        // Adding a document level handler
+        // A click on an element with the attribute data-toggle-id will show/hide the element with the given id
+
+        document.addEventListener('click', function(event) {
+            let id = event.target.dataset.toggleId;
+            if (!id) return;
+        
+            let elem = document.getElementById(id);
+        
+            elem.hidden = !elem.hidden;
+        });
+
+
+            //  Event Delegation is often used to add the same handling for many similar elements
+
+            // The algorithm:
+                // Put a single handler on the container.
+                // In the handler – check the source element event.target.
+                // If the event happened inside an element that interests us, then handle the event.
+    
+    </script>
+</body>
+</html>

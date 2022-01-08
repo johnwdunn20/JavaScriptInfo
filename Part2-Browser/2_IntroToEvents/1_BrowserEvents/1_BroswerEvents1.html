@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<input id="HTML-attribute" value="Click me for HTML attribute" onclick="sayHi()" type="button">
+
+	<br>
+	<br>
+
+	<input id="elem" value="Click me for DOM property">
+
+
+	<script>
+		"use strict";
+
+		// an event is a signal that something happened
+
+		// Most useful DOM events 
+
+		// Mouse events:
+			// click
+			// contextmenu - right-click
+			// mouseover / mouseout
+			// mousedown / mouseup - when the mouse is pressed / released over an element
+			// Keyboard events 
+			// keydown / keyup	
+
+		// Form elements
+			// submit - when user submits a <form>
+			// focus - when user focuses on an element, eg on an <input>
+
+		// Document events
+			// DOMContentLoaded - when the HTML is loaded and processed and DOM is fully built
+
+		// CSS events
+			// transitioned - when CSS animation finished
+		
+			// there are many more events too
+
+
+		// Event handlers
+			// to react to events, we assing a "handler" - a function that runs in case of an event
+
+		// several ways to assign a :
+		
+		//HTML-attribute
+			// use an "on<event>" like onclick
+
+			function sayHi() {
+				let HTMLattribute = document.getElementById('HTML-attribute');
+
+				let div = document.createElement('div');
+				div.innerHTML = 'Hi';
+				HTMLattribute.after(div);
+
+				console.log('Hi');
+			}
+		
+		// DOM property
+			// we can assign a handler as a dom property
+
+			let elem = document.getElementById('elem');
+
+			elem.onclick = function() {
+				console.log('Thank you!');
+			}
+			// assigning an event as a DOM property works the same as if we we were to put it in the html at first
+			// can also be used to overwrite an existing event handler
+			
+		
+		
+	</script>
+</body>
+</html>

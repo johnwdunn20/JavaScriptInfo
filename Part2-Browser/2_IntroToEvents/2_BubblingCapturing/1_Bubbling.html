@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body * {
+            margin: 10px;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <form onclick="console.log('form')">FORM
+        <DIV onclick="console.log('div')">DIV
+            <p onclick="console.log('p')">P</p>
+        </DIV>
+    </form>
+
+    <script>
+        "use strict";
+
+        // Bubbling: when an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors
+            // called bubbling because events bubble from the inner element up through the parents
+            // almost all events bubble (focus event does not bubble)
+
+        // in the html example, we get 3 logs to the console when we click on <p> element
+
+
+        // a handler on a parent element can always get the details about where it actually happened
+        // the most deeply nested element that caused the event is called the target element - event.target
+            // "event.target" is the "target" element that initiated the event, it doesn't change through the bubbling process
+            // "this" is the current element, the one that has a currently running handler on it
+
+        // I think what happens is that with one click, we're clicking all 3 elements because they're nested
+    </script>
+</body>
+</html>

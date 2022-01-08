@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input id="elem" type="button" value="click me">
+    <script>
+        // addEventListener and removeEventListener allow us to add multiple event handlers to an element
+
+        // syntax: elem.addEventListener(event, handler, [options])
+            // event: ex click
+            // handler: the handler function
+            // options
+                // once: if ture, then lisqtener is automatically removed after it triggers
+                // caputre: we'll learn about later
+                // passive: we'll learn about later
+
+        // elem.RevomeListener(event, handler, [options])
+            // has to be the exact same handler function to remove properly
+
+
+        // Multiple calls to addEventListener allow to add multiple handlers
+
+        function handler1() {
+            let inp = document.getElementById('elem');
+            let div = document.createElement('div');
+            div.innerHTML = 'Handler 1';
+
+            inp.after(div);
+        }
+        
+        function handler2() {
+            let inp = document.getElementById('elem');
+            let div = document.createElement('div');
+            div.innerHTML = 'Handler 2';
+
+            inp.after(div);
+        }
+
+
+        let elem = document.getElementById('elem');
+
+        elem.onclick = () => console.log('Hello');
+        elem.addEventListener('click', handler1);
+        elem.addEventListener('click', handler2);
+
+        // now all these functions are called on click
+        // there are some events that must be added with addEventListener
+
+
+
+    </script>
+</body>
+</html>

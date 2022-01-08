@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+
+    <style>
+        #style {
+            overflow: hidden;
+        }
+
+        #right-caret {
+            color: green;
+            float: left;
+        }
+
+        #down-caret {
+            color: green;
+            float: left;
+        }
+
+        #title {
+            float: left;
+        }
+    </style>
+
+    <div id="top">
+        <div id="right-caret">▶</div>
+        <div id="down-caret">▼</div>
+    
+        <div id="title">Sweeties (click me)!</div>
+    </div>
+    
+    <br>
+
+    <ul id="list">
+        <li>Cake</li>
+        <li>Donut</li>
+        <li>Honey</li>
+    </ul>
+
+    <script>
+        "use strict";
+
+        // hide elements at beginning
+        let ul = document.getElementById('list');
+        ul.hidden = true;
+
+        let downCaret = document.getElementById('down-caret');
+        downCaret.hidden = true;
+
+        let title = document.getElementById('title');
+        title.onclick = showItems;
+
+        // functions to hide and to show
+
+        function showItems() {
+            // hide list
+            let ul = document.getElementById('list');
+            ul.hidden = false;
+            
+            // show down caret
+            let downCaret = document.getElementById('down-caret');
+            downCaret.hidden = false;
+
+            // hide right caret
+            let rightCaret = document.getElementById('right-caret');
+            rightCaret.hidden = true;            
+
+            // change click event
+            let title = document.getElementById('title');
+            title.onclick = hideItems;
+            console.log('show');
+        }
+
+        function hideItems() {
+            // show list
+            let ul = document.getElementById('list');
+            ul.hidden = true;      
+
+            // show down caret
+            let downCaret = document.getElementById('down-caret');
+            downCaret.hidden = true;
+
+            // hide right caret
+            let rightCaret = document.getElementById('right-caret');
+            rightCaret.hidden = false;            
+
+            // change click event
+            let title = document.getElementById('title');
+            title.onclick = showItems; 
+            console.log('hide');
+        }
+
+
+
+
+
+    </script>
+
+</body>
+</html>

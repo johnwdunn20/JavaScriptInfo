@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        td {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+
+    <table id="table">
+        <tr>
+            <th colspan="3"><em>Bagua</em> Chart: Direction, Element, Color, Meaning</th>
+        </tr>
+        <tr>
+            <td class="nw"><strong>Northwest</strong><br>Metal<br>Silver<br>Elders</td>
+            <td class="n"><strong>North</strong><br>Metal<br>Silver<br>Elders</td>
+            <td class="ne"><strong>Northeast</strong><br>Metal<br>Silver<br>Elders</td>
+        </tr>
+        <tr>
+            <td class="nw"><strong>Northwest</strong><br>Metal<br>Silver<br>Elders</td>
+            <td class="n"><strong>North</strong><br>Metal<br>Silver<br>Elders</td>
+            <td class="ne"><strong>Northeast</strong><br>Metal<br>Silver<br>Elders</td>
+          </tr>
+          <tr>
+            <td class="nw"><strong>Northwest</strong><br>Metal<br>Silver<br>Elders</td>
+            <td class="n"><strong>North</strong><br>Metal<br>Silver<br>Elders</td>
+            <td class="ne"><strong>Northeast</strong><br>Metal<br>Silver<br>Elders</td>
+          </tr>          
+      </table>    
+
+    <script>
+        "use strict";
+
+        // event delegation: if we have a lot of elements handled in a similar way, then instead of assigning a handler to each of them, we put a single handler on their common ancestor
+
+        // we want to highlight a cell <td> on click
+            // instead of assigning an onclick handler to each <td> we'll use the a handler on the <table> element
+            // this way it doesn't matter how many <td> are in the table
+
+
+        let selectedTd;
+        let table = document.getElementById('table');
+
+
+        table.onclick = function(event) {
+            let td = event.target.closest('td');  // tells us which cell was clicked - if it was <strong>, we want the closest <td>
+
+            if (!td) return; // if there isn't a closest <td>, we don't want it
+
+            if (!table.contains(td)) return; // check that the td is in our table and not some other table
+
+            highlight(td);  // then highlight the target
+        }
+
+        function highlight(td) {
+            if (selectedTd) {
+                // remove the existing highlight if it exists (I think highlight is a hypothetical class)
+                selectedTd.classList.remove('highlight');
+            }
+            selectedTd = td;
+            selectedTd.classList.add('highlight');
+
+            console.log(selectedTd.classList);
+        }
+
+        
+
+    </script>
+</body>
+</html>

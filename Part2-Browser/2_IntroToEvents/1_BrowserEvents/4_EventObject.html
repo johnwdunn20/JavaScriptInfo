@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="Click me for event properties" id="elem">
+    <br>
+    <input id="elem2" type="button" value="Click me">
+
+
+    <script>
+        "use strict";
+
+        // for every event that happens, the browswer creates an event object, puts details into it, and passes it as an arguement to the handler
+
+        let elem = document.getElementById('elem');
+
+        elem.onclick = function(event) {
+            console.log(event.type);
+            console.log(event.currentTarget);
+            console.log(event.clientX + ', ' + event.clientY);
+        }
+
+        // common properties of the event object:
+            // type - ie, click
+            // currentTarget - element that handled the event. same as "this" unless this is bound to something else like in an arrow function
+
+        // depending on the event type, there are different properties (ie, keyboard events, pointer evetns, etc)
+
+
+        // we can assign an object as an event handler with addEventListener
+
+        let obj = {
+            handleEvent(event) {
+                console.log(event.type + " at " + event.currentTarget);
+            }
+        };
+
+        let elem2 = document.getElementById('elem2');
+        elem2.addEventListener('click', obj);
+
+        // we could also do the same things as a class
+
+    </script>
+</body>
+</html>
