@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // multi-arguement decorators
+
+        // previously, for a single arguement, we could use "cache.set(x, result)"
+        // but now we need to remember the result for a combination of arguements "(min, max)" and Map only takes a single value as a key
+
+        // many possible solutions:
+            // 1. Implement (or use a thrid-party) map-like data structure that is more versatile and allows multi-kesy
+            // 2. use nested maps
+                // {min: {max, result}}
+                // then we get result as cache.get(min).get(max)
+            // 3. Join the two values into one - use a string "min, max" as the Map key
+                // for flexibility, we'll also create a hashing function for the decorator that knows how to make one value from many
+
+        // most of the time, the third option works fine so that's what we'll use:
+
+        let worker = {
+            slow(min, max) {     // some computationally slow method
+                console.log(`Called with ${min},${max}`);
+                return min + max;
+            }
+        };
+
+        function cachingDecorator(func, hash) {
+            let cache = new Map();
+            return function() {
+                let key = hash(arguments);  // calls hash to create a single key from the 2 arguements
+                    // arguements is a built-in array-like object that contains the values of the arguements passed to the function
+                if (cache.has(key)) {
+                    return cache.get(key);
+                }
+
+                let result = func.call(this, ...arguments); // pass the correct this and all the arguements to worker.slow
+
+                cache.set(key, result);
+                return result;
+            }
+        }
+
+
+        function hash(args) {       // simple hashing function b/c only have 2 arguements
+            return args[0] + ',' + args[1];
+        }
+
+        // Hashing Function Wikipedia Def: Any function the can be used to map data or arbitrary size to fixed-value sizes
+
+        worker.slow = cachingDecorator(worker.slow, hash);
+
+        console.log(worker.slow(3, 5));
+        console.log(worker.slow(3, 5));
+
+        console.log(worker.slow(3, 7));
+
+
+        console.log('\n');
+        // func.apply(context, args)
+            // same things as func.call(context, args) except func.apply only accepts array-like args
+            // func.call lets us pass iterable args as the list to "call"
+
+        // Passing all arguements along with the context to another function is called "call forwarding"
+        // simplest form of "call forwarding" :
+
+        let wrapper = function() {
+            return func.apply(this, arguments)
+        };
+        // when external code calls such a wrapper, its indistinguishable from the call to the original function
+        // that's "call forwarding"
+
+        
+
+        // to improve our hashing function:
+        function hash2() {
+            return ( [].join.call(arguments));  // need [].join instead of just join b/c arguements is iterable and array-like but not a real array
+        }
+
+        // this method is called "method borrowing" b/c we borrow a join method from a regular array and use "[].join.call" to run it in the context of "arguements"
+
+
+
+    </script>
+</body>
+</html>

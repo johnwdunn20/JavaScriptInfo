@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // decorator
+        function spy(func) {
+
+            function wrapper(...args) {  
+                wrapper.calls.push(args);
+                func.apply(this, args);
+            };
+
+            wrapper.calls = [];
+
+            return wrapper;
+        }
+
+        // Ex:
+        function work(a, b) {
+            console.log(a + b);
+        }
+
+        work = spy(work);
+
+        work(1, 2);
+        work(4, 5);
+
+        for (let args of work.calls) {
+            console.log('call:' + args.join() );
+        }
+
+    </script>
+</body>
+</html>

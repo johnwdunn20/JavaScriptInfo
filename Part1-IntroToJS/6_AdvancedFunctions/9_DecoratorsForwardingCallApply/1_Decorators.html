@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Decorator: a special function that takes another function and alters its behavior
+
+
+        // Ex: Caching:
+
+        // let's say this function, slow, is computationally heavy (it isn't actually in this example) but its results are stable (ie, for the same input, it always returns the same result)
+        
+        function slow(x) {
+            console.log(`Called with ${x}`);
+            return x;
+        }
+
+        // cachingDecorator is a decorator (alters the behavior of other functions)
+        function cachingDecorator(func) {
+            let cache = new Map();
+
+            return function(x) {    // from her to the closing curly brace is the wrapper around the function "let result = func(x)"
+                if (cache.has(x)) {
+                    return cache.get(x);    // if it is, read the result from it
+                }
+
+                let result = func(x);   // otherwise call func and set result equal to x. func is the cachingDecorator function parameter
+
+                cache.set(x, result);   // add new result to our cache
+
+                return result;
+            };
+        }
+
+        slow = cachingDecorator(slow);  // now we make our funciton "slow" caching - we actually change the function and add the decorator to it
+
+        console.log(slow(1));   // slow(1) is cached
+        console.log(slow(1));   // already cached
+
+        console.log(slow(2));
+
+
+        // benefits of using a decorator instead of altering the code of function slow:
+            // the decorator is reusable - can be applied to other functions
+            // caching logic is seperate so we don't increase the complexity of slow
+            // we can combine multiple decorators if needed
+
+
+        console.log('\n');
+        // func.call(context, arg1, arg2, ...)
+            // allows us to call a function and explicitly set "this"
+            // if we used our above decoartor on a function that has a method with "this", "this" would be undefined
+
+        // runs func providing the first arguement as "this" and the next as the function's parameters
+
+        // Ex:
+        function sayHi(phrase) {
+            console.log(phrase + ' ' + this.name);
+        }
+
+        let user = { name: 'John'};
+        let admin = { name: 'Admin'};
+
+        sayHi.call(user, 'Hello');       // passes in 'user' as value for "this" and user.name is 'John' - and phrase parameter is 'Hello'
+        sayHi.call(admin, 'Hi');     
+
+
+        console.log('\n');
+        // here's how it would work in a decorator:
+
+        let worker = {      // we have an object with a method.
+            someMethod() {
+                return 1;
+            },
+
+            slow(x) {
+                console.log('Called with ' + x);
+                return x * this.someMethod();
+            }
+        };
+
+        function cachingDecorator2(func) {
+            let cache = new Map();
+
+            return function(x) {            // from her to the closing curly brace is the wrapper 
+                if (cache.has(x)) {
+                    return cache.get(x);
+                }
+
+                let result = func.call(this, x);    // now we are passing "this" correctly
+                cache.set(x, result);
+                return result;
+            };
+        }
+
+        worker.slow = cachingDecorator2(worker.slow)        // now we make worker.slow caching
+
+        console.log(worker.slow(3));    // adds 3 to the cache
+        console.log(worker.slow(3));    // doesn't add b/c already there
+
+        // How "this" is passed:
+            // after the decoration "worker.slow" is now the wrapper "function(x) {...}"
+            // then when "worker.slow(3)" is executed, the wrapper gets "3" as an arguement and "this = worker" because its the object before the dot
+            // inside the wrapper, if the result is not already cached, "func.call(this, x)" passes the current "this" (so "worker") and the current arguement "3" to the original method
+
+    </script>
+</body>
+</html>

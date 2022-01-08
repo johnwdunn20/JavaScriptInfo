@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // arrow functions are particularily useful when we don't want to leave the current context
+        // arrow functions don't have their own "this"
+            // if "this" is used, its taken from the outside
+
+        // Ex where "this" is taken from the outside:
+
+        let group = {
+            title: 'Our group',
+            students: ['John', 'Pete', 'Alice'],
+            
+            showList() {
+                this.students.forEach(student => console.log(this.title + ': ' + student));
+            }
+        }
+
+        group.showList();
+
+        // in the above example, "this.title" is exactly the same as in the outer method showList because we use an arrow function
+        // if we used a regular function, there would be an error because "this" would be undefined and undefined.title doesn't exist
+
+        // arrow functions can't be run with "new" so can't be constructors so they can't be called with "new"
+
+        // arrow functions also don't have the "arguements" variable
+
+        // arrow functions don't have "super"
+
+
+    </script>
+</body>
+</html>

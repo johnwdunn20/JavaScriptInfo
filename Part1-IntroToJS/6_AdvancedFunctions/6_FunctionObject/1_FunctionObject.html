@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // in JS, a function is an object
+            // think of functions as callable action objects
+
+        // function have built in properties
+            // we can also give functions custom properties
+
+
+        // name property
+        function sayHi() {
+            alert('Hi');
+        }
+
+        console.log(sayHi.name); 
+
+        // also works when a function is created without a name and then immediately assigned
+        let sayHi2 = function() {
+            alert('Hi');
+        }
+
+        console.log(sayHi2.name);
+
+
+        // object methods also have the name property as well
+
+        // there will be some scenarios where JS can't figure out the right name - then .name will return an empty string
+
+
+
+        console.log('\n');
+        // length property
+            // for functions, .length returns the number of function parameters
+
+        function f1(a, b, ...more) {}
+
+        console.log(f1.length); // The rest parameters aren't counted
+
+        // the length property can be used for introspection - when a function operates on other functions
+            // depending on the length, you call a different function
+
+
+
+        console.log('\n');
+        // Custom properties
+
+        // Ex: adding the property counter to a function to track total calls count
+        
+        function sayHi3() {
+            console.log('Hi');
+
+            sayHi3.counter++;
+        }
+
+        sayHi3.counter = 0;
+
+        sayHi3();
+        sayHi3()
+        console.log(`Called sayHi3 ${sayHi3.counter} times`);
+
+
+        console.log('\n');
+        // function properteries can replace sometimes:
+        
+        function makeCounter() {
+            // instead of:
+            // let count = 0
+
+            function counter() {
+                return counter.count++;
+            };
+
+            counter.count = 0;
+
+            return counter;
+        }
+
+        let counter = makeCounter();
+        console.log(counter()); // 1
+        console.log(counter()); // 2
+
+        // now count is stored in the function directly, not in its outer Lexical Environment
+        // there are a few differences between the 2 options - google it if I need it
+        
+
+
+
+
+    </script>
+</body>
+</html>

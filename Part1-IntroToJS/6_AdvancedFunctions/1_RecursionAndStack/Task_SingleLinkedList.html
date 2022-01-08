@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function printList(list) {
+            
+            console.log(list.value);
+
+            if (list.next === null) return;
+
+            let obj = list.next;
+            
+            printList(obj);
+
+
+        }
+
+        function printListIter(list) {
+
+            let obj = list
+
+            let i = 0;
+
+            while (obj) {
+                console.log(obj.value);
+
+                obj = obj.next;
+            };
+        }
+
+        let list = {
+            value: 1,
+            next: {
+                value: 2,
+                next: {
+                    value: 3,
+                    next: {
+                        value: 4,
+                        next: null
+                    }
+                }
+            }
+        };
+
+
+        printList(list);
+        
+        console.log('\n');
+
+        printListIter(list);
+    </script>
+</body>
+</html>

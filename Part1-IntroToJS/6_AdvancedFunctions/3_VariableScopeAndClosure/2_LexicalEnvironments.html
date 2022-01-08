@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // Lexical Environment
+        
+        // this is confusing so just read the full explanation if I need it
+
+        // a Lexical Environment is a "{...}" block
+        // the Global Lexical enivromnemt is everything in the script (so not in a {} block)
+
+        // when the code wants to access a variable, it first searches the inner Lexical Environment, then the outer one, then the more outer one, etc, until finally the global lexical environment
+        // if variable isn't found it's an error in strict mode
+
+        // variables are updated in the lexical environment where it lives
+            // this is why the makeCounter function in 1_Scope works, I think???
+
+
+        // Closure (general programing term)
+            // a closure is a function that remembers its outer variables and can access them
+                // in JS, all functions are closures
+
+        
+        // a Lexical Environment is garbage collected when it becomes unreachable, just like any other object
+            // can occasionally lead to some weird debugging issues in browsers with V8 operating engines (Chrome, Edge, and Opera)
+
+
+        function makeWorker() {
+            let name = 'Pete';
+
+            return function() {
+                alert(name);
+            }
+        }
+
+        let name = 'John';
+
+        let work = makeWorker();    // work = function() { alert(name); }
+
+        console.log(work);
+
+        work(); // alerts Pete because it's in the inner lexical environment
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

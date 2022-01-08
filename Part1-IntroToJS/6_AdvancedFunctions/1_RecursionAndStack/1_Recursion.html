@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // taking light notes because I'm familiar with the concept of recursion 
+
+        // recursion: when a function calls itself
+
+        // x * x n times:
+        function pow(x, n) {
+            if (n == 1) return x;   // base of the recursion
+            
+            return x * pow(x, n-1);
+        }
+
+        console.log(pow(5, 5));
+
+        // recusion deptch: how many nexted calls
+        //the maximal number of nested calls (including the first one) depends on the engine byt we can rely on JS working up to 10,000 nested calls
+
+        // iterative (aka loops) is usually more efficient
+            // but efficiency doesn't always matter and sometimes recursion can be easier
+
+        // Ex:
+        // get the sum of salaries
+
+        let company = {
+            sales: [{
+                name: 'John',
+                salary: 1000
+            }, {
+                name: 'Alice',
+                salary: 1600
+            }],
+
+            development: {
+                sites: [{
+                name: 'Peter',
+                salary: 2000
+                }, {
+                name: 'Alex',
+                salary: 1800
+                }],
+
+                internals: [{
+                name: 'Jack',
+                salary: 1300
+                }]
+            }
+        };
+
+        // maybe sites can be spit even further. Iterating over this is a challenge because the structure is not simple
+
+        function sumSalaries(department) {
+            if (Array.isArray(department)) { // if it's an array, we can get the sum of salaries
+                return department.reduce((prev, current) => prev + current.salary, 0); // sum the array
+            } else { // if not an array
+                let sum = 0;
+                for (let subdep of Object.values(department)) {
+                sum += sumSalaries(subdep); // recursively call for subdepartments, sum the results
+                }
+                return sum;
+            }
+        }        
+
+
+
+        // recursive  (also called recursively-defined) data structures replicate itself in parts
+        // Ex: an html document may contain a list of:
+            // text pieces
+            // html-comments
+            // other html tags (that then may have comments or text pieces or other tags)
+
+    
+
+        
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // when passing object methods as callbacks (like "setTimeout") we lose "this"
+
+        // Ex:
+        let user = {
+            fName: 'John',
+            sayHi() {
+                console.log(`Hi, ${this.fName}`);
+            }
+        }
+
+        setTimeout(user.sayHi, 10); // Hello, undefined
+            // setTimeout fo the function user.sayHi seperately from the object
+
+
+        // Above was an example but happens any time we want to pass an object method seomwhere else where it will be called.
+        // Need to make sure its called in the right context
+
+        // There are a few soultions:
+            // 1. a wrapping fucntion (the simplest solution)
+            // 2. bind - a built in method that fixes "this"
+
+        
+
+        // 1. A wrapper:
+
+        setTimeout(function() {
+            user.sayHi();
+        }, 20)
+
+        // works because it recieves "user" from the outer lexical environment and then calls the method normally
+        // (we could also use an arrow function)
+        // there is a potential issue if the value of user changes before the timeout's milliseconds say to call the function
+
+
+        // 2. bind
+            // built in method that fixes "this"
+            // syntax: let boundFunc = func.bind(context);
+
+        let person = {
+            firstName: 'John'
+        }
+        
+        function sayName() {
+            console.log(this.firstName);
+        }
+
+        let funcUser = sayName.bind(person);
+            // the result of func.bind(context) is a special function-like "exotic object" that is callable as a function and passes the call to func (from the syntax, not the example) setting this=context
+            // so calling boundFunc is like func with a fixed this
+
+        funcUser(); // John
+
+        // same thing with an object method:
+
+        let sayHi = user.sayHi.bind(user);  // here we bind the method "user.sayHi" to "user" so sayHi is a bound function that can be called alone or passed to setTimeout
+            // the context will be right
+
+        sayHi();    // runs w/o an object
+
+        setTimeout( sayHi, 30);
+
+
+
+        // Partial Functions
+            // we can bind arguements as well as "this"
+        // bind full syntax: let bound = func.bind(context, [arg1], [arg2], ...)
+
+        // Ex:
+        function mul(a, b) {
+            return a * b;
+        }
+
+        // use bind to create a function double on its base:
+        let double = mul.bind(null, 2);
+            // this is called "partial function applications" - creating a new function by fixing some parameters of an existing one
+            // note we don't actuallly fix "this" here, but bind requires it so we put null there
+
+        console.log(double(3)); // 6
+
+        // partial functions are rarely used in practice
+
+        
+    </script>
+</body>
+</html>

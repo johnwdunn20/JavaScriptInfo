@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+
+        function byField(field) {
+
+            return function(a, b) {         // when byField() is called, it return this function
+                if (a[field] > b[field]) {
+                    return 1
+                }
+                return -1
+            }
+
+        }
+ 
+        // Book's answer (more condense than mine)
+
+        // function byField(field) {
+        //     return (a,b) => a[field] > b[field] ? 1: -1;
+        // }
+
+        let users = [
+            { name: "John", age: 20, surname: "Johnson" },
+            { name: "Pete", age: 18, surname: "Peterson" },
+            { name: "Ann", age: 19, surname: "Hathaway" }
+        ];
+
+        users.sort(byField('name'))
+
+        console.log(users);
+
+        document.write(JSON.stringify(users));
+
+        users.sort(byField('age'));
+
+        document.write('<br>'.repeat(2));
+
+        document.write(JSON.stringify(users));
+        
+    </script>
+</body>
+</html>

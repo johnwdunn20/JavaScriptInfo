@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // first with setInterval
+
+        function printNumbers(from, to) {
+            let counter = from;
+
+            let timerId = setInterval( () => {
+                 console.log(counter);
+                 counter++;
+            }, 1000);
+
+            setTimeout( () => {
+                clearInterval(timerId);
+            }, 1000 * (to + 1));
+        }
+
+        printNumbers(0, 5);
+
+
+        console.log('\n');
+        // now with setTimeout
+
+        function printNumbers2(from, to) {
+            let counter = from;
+
+            setTimeout( function run() {
+                console.log(counter);
+                counter++;
+                setTimeout(run, 1000 * (to + 1));
+            }, 1000);
+        }
+
+        printNumbers2(0, 5);
+
+
+        // their solution (mine goes on forever)
+        function printNumbers3(from, to) {
+            let current = from;
+
+            setTimeout(function go() {
+                alert(current);
+                if (current < to) {
+                setTimeout(go, 1000);
+                }
+                current++;
+            }, 1000);
+        }
+
+        printNumbers3(0, 5);
+
+    </script>
+</body>
+</html>

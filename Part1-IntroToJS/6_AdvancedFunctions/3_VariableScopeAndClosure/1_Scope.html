@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // when a variable is declared inside a code block {...}, it's only avalaible in that block
+        
+        // Nested Functions
+
+        function sayHiBye(firstName, lastName) {
+            
+            // helper nested function to use below
+            // it can access the outer variables, firstName & lastName
+            function getFullName() {
+                return firstName + ' ' + lastName;
+            }
+        
+            alert('Hello, ' + getFullName());
+
+        }
+
+        // nested functions can be returned, either as a property of a new object or as a result by itself
+
+        function makeCounter() {
+            let count = 0;
+
+            return function() {
+                return count++;
+            }
+        }
+        
+        let counter = makeCounter();
+
+        console.log(counter());
+        console.log(counter());
+
+        console.log(counter.toString());
+
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Linked List
+            // a Recursive data structure
+
+        // the issue with arrays is that shift and unshift are slow (adding or deleting from the beg of the array)
+            // b/c we then need to renumber everything
+            // so arrays are slow for big queues
+        
+        // linked list element is recursively defined as an object with:
+            // value
+            // next - property that referenced the next linked list element of null if it's the end
+
+        let list = {
+            value: 1,
+            next: {
+                value: 2,
+                next: {
+                    value: 3,
+                    next: {
+                        value: 4,
+                        next: null
+                    }
+                }
+
+            }
+        };
+
+        console.log(list.next.next.value);
+
+        // the list can easily be split into parts and later joined back:
+        let secList = list.next.next;
+        list.next.next = null;
+
+        // join back:
+        list.next.next = secList;
+
+        // we can more quickly (in terms of efficiency) add to the beginning of a linked list than an array
+        list = {
+            value: "new item",
+            next: list
+        };
+
+        console.log(list.value);
+
+        // to remove a value form the middle
+        list.next = list.next.next;
+
+        console.log(list);
+
+        // unlike arrays, there is no mass renumbering so it's quicker
+        // downside to linked lists is we can't easily access an element by its number like an array (arr[n])
+
+        // in a linked list, we could add "prev" in addition to "next" to reference the previous element and move back easily
+            // the data structure can vary according to our needs
+
+
+        
+
+
+    </script>
+</body>
+</html>

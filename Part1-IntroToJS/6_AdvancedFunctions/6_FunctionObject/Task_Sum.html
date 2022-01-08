@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // for the whole thing to work, the result of sum must be a function
+        // that function must keep in memory the current value between calls
+
+        // I really don't get this at all
+
+        function sum(value) {
+
+            let curr = value;
+            
+            function f(next) {
+                curr += next;
+                return f;       // not recurrsion - recurssion would be f(). We're just returning the function without calling it
+            }
+
+            f.toString = function() {
+                return curr;
+            }
+
+            return f;
+        }
+
+        document.write(sum(1)(2));
+
+
+    </script>
+</body>
+</html>

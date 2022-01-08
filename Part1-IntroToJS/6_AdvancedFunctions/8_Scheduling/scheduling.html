@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // setTimeout: allows us to run a function after the interval of time
+        // setInterval: allows us to run a function repeatedly, starting after the interval of time, then repeating continuosuly after that interval
+
+        // Scheduling a call: term for when we want to execute a function at a later time
+
+
+
+        // there is no universal specification for these methods (NodeJS and almsot all browsers support them, but they support them differently)
+
+
+
+        // setTimeout
+        // syntax:
+        // let timerId = setTimeout(func | code, [delay], [arg1], [arg2],...)
+
+        // parameters:
+        // func | code: function or string of code to execute
+            // usually a function (string of code is not recommended)
+            // but if first arguement is a string, JS creates a function from it
+
+        // delay: time before run in milliseconds
+
+        // args: arguements for the function
+
+        // Ex:
+        function sayHi(phrase, who) {
+            console.log(`${phrase}, ${who}`);
+        }
+
+        setTimeout(sayHi, 1000, 'Hello', 'John');
+            // you don't call the function with () here
+            // b/c setTimeout expects a reference to a function. We don't want to pass the result of the function execution to setTimeout
+
+        // can also use an arrow function:
+        setTimeout( () => console.log(`${phrase}, ${who}`), 1000, phrase = 'Hello', who = 'John' );
+
+
+        console.log('\n');
+        // Canceling with clearTimeout
+
+        // a call to setTimeout returns a "time identifier" that we can use to cancel the execution:
+        let timerId = setTimeout( () => console.log('never happens'), 1000);
+        console.log(timerId)
+
+        clearTimeout(timerId);  // 'never happens' is logged when I comment this out
+        console.log(timerId);   // same identifier (doesn't become null after canceling)
+
+        // apparently, JS keeps running and it's only that function that waits
+
+
+
+        // setInterval
+        // same syntax as setTimeout
+        // runs the function regularly after the given interval time
+        // use clearInterval(timerId) to stop it
+
+        let timerId2 = setInterval( () => console.log('tick'), 2000)
+
+        setTimeout( () => {clearInterval(timerId2); console.log('stop')}, 5000)
+
+
+        console.log('\n');
+        // Nested setTimeout
+            // can nest setTimeout instead of using setInterval
+            // better if the next call may depend on the results of the current one
+            // also gurantees the time between calls is the exact same (so if you say 100ms, it's exactly 100 ms)
+
+            // I don't fullly get this. Google it if I need it
+
+        // ex:
+        let timerId3 = setTimeout( function tick() {
+            console.log('tick2');
+
+            timerId3 = setTimeout(tick, 2000);
+        }, 2000)
+
+
+        // There's more to this, but I can google it if needed
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // a function can be called with more arguements than the function has parameters, but those excess parameters won't do anything
+
+        // Rest parameters: "..."
+            // used for all excess arguements in a function call and puts them in an array:
+
+        function showName(fName, lName, ...titles) {
+            console.log(fName);
+
+            console.log(titles[0]);
+
+            console.log(titles.length);
+        }
+
+        showName('John', 'Dunn', 'Mr.', 'sir')  // last 2 arguements go into titles as an array
+
+        
+        console.log('\n');
+        // "arguements" variable: special array-like object that contains all arguements by their index
+        function showPerson() {
+            console.log(arguments)
+
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+
+            console.log(arguments.length);
+        }
+
+        showPerson('Julius', 'Caesar');
+
+        console.log('\n');
+        showPerson('Ilya'); // arguements[1] is undefined
+
+        // 'arguements' comes from old JS, before Rest Parameters existed
+        // problem with "arguements" is that's it's not an array so doesn't have array methods like map
+        // arrow function don't have "arguements"
+            // also don't have "this"
+
+        
+
+        console.log('\n');
+        // Spread syntax
+        // Rest Parameters if for getting an array from a list of parameters
+        // Spread syntax is for getting a list of parameters from an array
+
+        console.log(Math.max(3, 4, 5));
+        
+        // if we want Math.max to work with an array, we use Spread Syntax (also "...")
+
+        let arr = [1, 2, 4, 8];
+
+        console.log(Math.max(...arr));
+
+        // also works with multiple iterables:
+        let arr2 = [-8, 4, 9, 10];
+
+        console.log(Math.max(...arr, ...arr2));
+
+        // or can be used to merg arrays
+
+        let merged = [0, ...arr, 8, ...arr2];
+        console.log(merged);
+
+        // spread syntax works with any iterable, not just arrays
+        // turn the string to an array of characters:
+        let str = 'Hello';
+        console.log([...str]);
+            // in this example, we could also use Array.from(obj)
+            // Note: Array.from(obj) is more universal because works with BOTH array-likes and iterables while Spread Syntax only works with iterables
+
+
+        console.log('\n');
+        // Create a copy on an Array or object with Spread Syntax:
+            // Previously we had to use Object.assign()
+
+        let arrCopy = [...arr];
+
+        let obj = {a: 1, b: 2};
+
+        let objCopy = {...obj};
+
+        // the objects have the same contents:
+        console.log(JSON.stringify(obj) === JSON.stringify(objCopy));
+
+        // but they are not equal because they have different references
+        console.log(obj === objCopy)
+
+
+        // when "..." is at the end of a function, it's a rest parameters and gathers the rest of the list
+        // Rest parameters are used to create function that accept any number of parameters
+
+        // when "..." occurs in a function call or similar, it's spread syntax and expands an array into a list
+        // Spread Syntax is used to pass an array to functions that normally would require a list of many arguements
+
+
+    </script>
+</body>
+</html>

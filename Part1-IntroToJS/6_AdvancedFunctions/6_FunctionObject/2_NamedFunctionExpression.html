@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // Named Function Expression (NFE)
+            // term for a function expression with a name
+
+        // normal Function Expression:
+        let sayHi = function(who) {
+            console.log(`Hello, ${who}`);
+        }
+
+        // Named Function Expression (still a function expression, not a function declaration like "function sayHi() {stuff here...}")
+        let sayHi2 = function func(who) {
+            if (who) {
+                console.log(`Hello, ${who}`);
+            } else {
+                func('Guest');
+            }
+        }
+
+        // By adding the "func" name we:
+            // the name allows the function to reference itself internally
+            // the name is not visible outside the function
+
+        // if we changed the name of sayHi2, it still works:
+
+        sayHi2();
+
+        let welcome = sayHi2;   // this wouldn't work if instead of "func('Guest')" we had sayHi2('Guest') because we've changed the function name so it no longer works
+            // but I could just do this with default values anyways
+        
+        sayHi2();
+
+
+        
+
+
+
+    </script>
+</body>
+</html>

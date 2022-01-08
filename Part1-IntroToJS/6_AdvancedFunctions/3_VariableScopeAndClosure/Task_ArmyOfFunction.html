@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function makeArmy() {
+            let shooters = [];
+
+            
+            for (let i = 0; i < 10; i++) {
+                let shooter = function() {
+                    document.write(i + '<br>');
+                }
+                shooters.push(shooter);
+
+            }
+
+            return shooters;
+        }
+
+        let army = makeArmy();
+
+        console.log(army);
+
+        army[0]();
+        army[1]();
+        army[2]();
+
+
+    </script>
+</body>
+</html>

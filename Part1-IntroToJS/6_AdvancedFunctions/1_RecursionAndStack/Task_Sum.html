@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function sumToFor(n) {
+            let result = 0;
+
+            for (let i = 1; i <= n; i++) {
+                result += i;
+            }
+
+            return result;
+        }
+
+        console.log(sumToFor(100));
+
+        function sumToRecur(n) {
+
+            if (n == 1) return n;
+
+            return n + sumToRecur(n-1);
+
+            
+        }
+
+        console.log(sumToRecur(100));
+
+
+        function sumToArith(n) {
+            if (n % 2 == 0) {
+                return n * n / 2 + n / 2;
+            }
+            return n * n / 2;
+        }
+
+        console.log(sumToArith(100));
+
+
+    </script>
+</body>
+</html>

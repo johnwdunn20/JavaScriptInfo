@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // Had to look this up elsewhere because the tasks were confusing
+        // from: http://web.archive.org/web/20120101221030/http://blog.morrisjohns.com/javascript_closures_for_dummies.html
+
+        // in short, a function defined within another function is only accessible within this function. But it may be passed as a result and then this result may be called
+
+
+        // A closure is:
+            // the local variables for a function - kept alive AFTER the function has returned
+            // OR
+            // a strack-frame which is not dealloocated when the function returns
+
+        
+        // this code returns a reference to a function:
+
+        function sayHello(name) {
+            let text = 'Hello ' + name;     // local variable
+            let sayHi = function() {document.write(text)};  // anonymous function (anonymous function is a function without a name)
+
+            return sayHi;   // returns a function
+        }
+
+        // when you use function() inside another function, you're creating a closure
+        // if you declare a function within a function, then all the local variables remain accessible after returning from the function you called (this is unique to JS - most other languages don't work like that)
+
+        let say = sayHello('Jane');
+        say();
+
+        document.write('<br>');
+
+        // the below code references the variable text, which was a local variable of SayHello():
+        document.write(say.toString()); // shows code
+        
+        // the anonymous function can reference text which holds the value of "Jane" because the local variables of sayHello() are kept in closure
+        // in JS, a function reference also has a reference to the closure it was created in
+
+
+        // be wary of loops inside functions
+
+
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+
+        // the Global Object provides variables and functions that are available anywhere, those that are built into the language
+
+        // In a broswer, it's named "window"
+        // In NodsJS, it's named "global"
+
+        // "globalThis" is a standardized name too work in all environments (supported by all major broswers)
+            // best option if your code may run in an environment other than a broswer
+
+        // but we'll just use "window" in the below examples
+
+
+        alert('Hello');
+            // is the same as:
+        window.alert('Hello');
+
+        // global variables are not properties of the global object when declared with const / let
+            // they are with "var" and that's another reason not to use that
+
+
+        // to make a variable available globally (so all scripts can access it), write it directly as a property:
+        window.currentUser = {name: 'John'};
+            // not sure exactly how exactly other scripts can access it, maybe they need to be imported or something
+
+        // either way, global variables are generally discouraged because they're confusing - weird if a variable comes from another script
+
+        // to make our code future-proof and easier to understand, we should access properties of the global object directly, as "window.x"
+
+
+    </script>
+</body>
+</html>

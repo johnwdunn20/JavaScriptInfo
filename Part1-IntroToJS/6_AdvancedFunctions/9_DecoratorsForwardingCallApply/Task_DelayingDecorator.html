@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // my solution
+        function delay(f, ms) {
+
+            return function(words) {
+                setTimeout(f, ms, words);
+            };
+
+        }
+
+
+
+        // Ex: 
+        function f(x) {
+            console.log(x);
+        }
+
+        let f1000 = delay(f, 1000);
+        let f1500 = delay(f, 1500);
+
+        f1000('test1');
+        f1500('test2');
+
+        // their solution (mine works for this function, but I think this would work for any function)
+        function delay2(f, ms) {
+
+            return function() {
+                setTimeout( () => f.apply(this, arguments), ms);    // arrow functions don't have their own "this" and "arguements" so f.apply(this, arguments) takes "this" and "arguements" from the wrapper
+
+
+            };
+
+            // we could also do instead of the arrow function above:
+            // return function(...args) {
+                // let savedThis = thsi;
+                // setTimeout(function() {
+                //     f.apply(savedThis, args);
+                // }, ms)
+                // };
+        }
+
+        function f(x) {
+            console.log(x);
+        }
+
+        let f2000 = delay2(f, 2000);
+        let f2500 = delay2(f, 2500);
+
+        f2000('test3');
+        f2500('test4');
+
+
+    </script>
+</body>
+</html>

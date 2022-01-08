@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //  this doesn't work and I'm really not sure why
+        function makeCounter() {
+
+            function counter() {
+                return counter.count++;
+            }
+
+            counter.count = 0;            
+
+            counter.set = value => count = value;
+
+            counter.decrease = () => count--;
+
+            return counter();
+        }
+
+        let counter = makeCounter();
+
+        console.log(makeCounter());
+        console.log(makeCounter());
+
+
+
+
+    </script>
+</body>
+</html>
