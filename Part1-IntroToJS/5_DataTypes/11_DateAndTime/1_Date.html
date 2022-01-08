@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // Date is a built-in object
+            // stores date and time and has built in methods
+
+        let now = new Date();
+        // without arguements, a new Date object returns current date and time
+        console.log(now);
+
+
+        // new Date(milliseconds)
+        // creates a Date object with the time equal to number of milliseconds after Jan 1, 1970 UTC+0 (Coordinated Universal Time)
+        // Dates before then have negative timestamps
+
+        let jan01_1970 = new Date(0);
+        // an integer number representing the number of milliseconds that has passed since the beginning of 1970 is a "timestamp"
+            // I think we don't show exactly Jan 1, 1970 b/c I'm in a different time zone, GMT-800 (Grenwich Mean Time)
+
+        console.log(jan01_1970);
+
+        // to convert back to a timestamp:
+        console.log(jan01_1970.getTime())
+
+
+        console.log('\n');
+        // new Date(datestring)
+        // if there's a single string arguement, then it's parsed automatically
+        let myBirthday = new Date('1993-04-12');
+        console.log(myBirthday);
+        // Since the time is not set, JS assumes it's midnight GMT and is adjusted according to the timezone the code is run in
+
+
+        // new Date(year, month, date, hours, minutes, seconds, milliseconds)
+        // year must have 4 digits
+        // month count starts at 0 (so Jan is 0, Dec is 11)
+        // if date parameter is absent, it's assumed to be 1
+        // if minutes, seconds, or ms is absent, assumed to be 0
+        let myDate = new Date(2003, 3, 8, 8, 3, 4, 123);
+
+        console.log(myDate);
+
+
+        console.log('\n');
+        // Access date components from a Date object:
+        // getFullYear()
+            // getyear() is deprecated and only returns 2 digits
+        // getMonth()
+        // getDate()
+            // returns day (from 0 to 31)
+        // getHours()
+        // getMinutes()
+        // getSeconds()
+        // getMilliseconds()
+        // getDay()
+            // returns 0 to 6 for Sunday to Saturday
+
+        // all the above methods return the components relative to the local time zone
+        // for UTC+0, just add "UTC" after "get" like getUTCFullYear()
+
+        // 2 methods without a UTC-variant:
+        // getTime() - returns timestamp for the date - number of milliseconds
+        // getTimezoneOffest() - returns the difference between UTC and the local time zone in minutes
+
+
+        // Setting date components
+        // I can just google this list if I need it
+        // used to set part of a date / time component, ie: setMonth(month, [date])
+
+        
+        // Autocorrection
+        // set out of range values and it will auto-adjust
+        let myDate2 = new Date(2013, 0, 32);    // converts to Feb 1 b/c Jan 32 doesn't exist
+        console.log(myDate2);
+
+        // we can just add 2 days to a date and it know what's next in the calendar:
+        myDate2.setDate(myDate2.getDate() + 2); // adds 2 days
+        console.log(myDate2); 
+
+
+        // to get date 70 seconds from now:
+        let myDate3 = new Date();
+        myDate3.setSeconds(myDate3.getSeconds() + 70);  // adds 70 secs
+        console.log(myDate3);
+
+
+
+        console.log('\n');
+        // when we add or subtract dates and the time difference is in milliseconds
+
+        // Date.now()  - returns current timestamp
+            // same as new Date().getTime() but Date.now() is more efficient
+        // a timestamp is an integer of the milliseconds
+
+        console.log(Date.now());
+
+        // Date.parse(str) - reads a date from a string
+        // string format is: YYY-MM-DDTHH:mm:ss.sssZ where Z denotes the time zone
+        // returns the timestamp
+        // usefyl when we want to return a new date from a str:
+
+        let ms = Date.parse('2012-01-26T13:51:50.417-07:00');
+        console.log(ms);
+
+        let myDate4 = new Date( Date.parse('2012-01-26T13:51:50.417-07:00'));
+        console.log(myDate4);
+
+
+
+
+
+    </script>
+</body>
+</html>

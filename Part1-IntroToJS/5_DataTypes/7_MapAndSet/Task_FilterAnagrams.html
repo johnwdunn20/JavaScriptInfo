@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>     
+        
+        /*
+            Potential solution 1
+                - for every value in array, make it lower case and sort it alphabetically
+                    - would need to make every arr value it's own array to sort the letters alphabetically
+                - then I could make this a Map where the keys are the sorted letters and arr values are Map values
+                    - this would get unique
+                - then I return the Map values as an array
+                - But there's probably an easier way to do this
+        */
+
+        function aClean2(arr) {
+            let map = new Map();
+
+            arr.forEach( function(value) {          // could have done all the methods on value in one line
+                let val = value.toLowerCase();
+                let valArr = val.split('');
+                map.set(valArr.sort().join(''), value);
+            });
+            return Array.from(map.values());    // we could do this with a plain object instead of a Map because the keys are strings
+        }
+
+        let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+        console.log(aClean2(arr));            
+
+    </script>
+</body>
+</html>

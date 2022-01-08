@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // Internals
+
+        // Arrays are just objects so they're copied by reference, just like an object
+        // If we quit working with an array as an "ordered collection" and start working with it as an object, the array breaks
+        // Arr[0] is essentially obj[key]
+        // you could add an arbitrary key like Arr['You'] = 'John' but that would break the array and make it work like ab object
+
+
+        // Performance
+        // push/pop are fast and shift/unshift are slow 
+            // b/c shift, for ex, require that the element is removed, then move every element to the left, then update the length property
+
+
+        // for/in loops through the properties of an object
+        // for/of loops through the properties of an iterable object
+            // Arrays
+            // also works with strings
+
+
+        for (let x of 'hello') {
+            console.log(x);
+        }
+        console.log('\n');
+
+        // we could do this, but it's a bad idea
+        for (let x in 'hello') {
+            console.log(x);
+        }
+
+        // for in loop iterates over ALL properties, not just the numeric ones
+            // issues when we work with "array-like" objects
+        // for/in loop is optimized for generic objects, not arrays, so it's slower
+
+
+        // we also could use "for (let i=0; i<arr.length; i++)"
+
+
+        console.log('\n');
+        // length property
+        // length is not the count of values in the array but the greatest numeric index + 1
+
+        // seems like methods perform an action while properties are static
+        // length doesn't perform an action because it's updated as the array is modified
+
+        // the length property is also writable
+            // if we increase it, nothing happens
+            // but if we decrease it, then we can truncate our array
+        // so to clear array
+        let arr = ['John', 'Hannah'];
+        arr.length = 0
+        console.log(arr);
+
+
+        console.log('\n');
+        // Multidemensional Arrays
+        let matrix = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9],
+        ];
+
+        console.log(matrix);
+
+        // to get an element:
+        console.log(matrix[1][1]);
+
+
+        console.log('\n');
+        // toString: Arrays have their own implementation of the toString method that returns a comma-seperated list of elements
+            // num.toString() - used for numbers to strings
+        let arr2 = [1, 2, 3];
+        console.log(String(arr2));
+
+
+        // Don't compare arrays with ==
+        // b/c == treats them as objects and objects are only == equal if they're references of the same object
+        
+        // with Arrays, compare them side by side in a loop or use an iteration method
+
+    </script>
+</body>
+</html>

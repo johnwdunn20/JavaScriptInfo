@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // using a for of loop
+        function sumSalaries(salaries) {
+            let total = 0;
+            for (let money of Object.values(salaries)) {
+                total += money;
+            }
+            return total;
+        }
+
+        let people = {
+            "John": 100,
+            "Pete": 300,
+            "Mary": 250
+            };       
+
+        console.log(sumSalaries(people));
+        console.log(sumSalaries({}));
+
+
+        // could also do it by converting to an array
+        function sumSalaries2(salaries) {
+            return Object.entries(salaries).reduce( (accum, [key, value]) => accum + value, 0)
+        }
+
+        console.log(sumSalaries2(people));
+
+        console.log(sumSalaries2({}));
+
+    </script>
+</body>
+</html>

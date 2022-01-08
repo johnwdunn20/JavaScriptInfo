@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // Destructuring
+            // a syntax that allows us to unpack arrays or objects into a unch of variables
+            // useful when a function needs piecs of an object or array
+
+
+        // Destructuring Arrays
+            // works with any iterable (Sets, Maps, etc)
+
+        let arr = ['John', 'William', 'Dunn', 27];
+
+        // destructuring assignment sets firstName = arr[0] and lastName = arr[2]
+        let [firstName, , lastName] = arr;
+            // can skip elements with extra commas
+        // does not modify the array
+
+        console.log(`${firstName} ${lastName}`);
+        console.log(typeof(firstName)); // is a string
+
+        // also works well with "split"
+        let [fName, lName] = 'Hannah Marie'.split(' ');
+
+        console.log(lName);
+
+        // can assign to anything
+        // ex: object properties
+        let user = {};
+
+        [user.name, user.surname] = 'Abigal Dunn'.split(' ');
+
+        console.log(user);
+
+        console.log('\n');
+
+        // looping with .entries()
+
+        for (let [key, value] of Object.entries(user)) {
+            console.log(`${key}:${value}`);
+        }
+
+
+        // trick to swap 2 variables:
+        let guest = 'Jane';
+        let admin = 'Pete';
+
+        [guest, admin] = [admin, guest];
+
+
+        // rest "..." - add 3 dots at the end of destructuring to get everything else in an array
+        let [fn, ln, ...rest] = arr;
+
+        console.log(rest);
+
+
+        // absent values are undefined and don't cause an error
+
+        let [make, model] = [];
+
+        console.log(make);
+
+        // we can set defaults if we want:
+
+        let [year = 2020, month = 12] = [2018]
+
+        console.log(year + ' ' + month);
+
+        // these defaults could be more complex, even function calls like "prompt"
+            // these defaults only are evaluated if the value is not provided
+
+
+
+
+    </script>
+</body>
+</html>

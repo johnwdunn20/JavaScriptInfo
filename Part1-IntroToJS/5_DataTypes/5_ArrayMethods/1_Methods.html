@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // arr.splice(start [, deleteCount, elem1, elemN])
+        // removes elements starting at "start" removes deleteCount elements and replaes them with elem1 - elemN
+
+        let arr = ['aye', 'hi', 'yo', 'hello'];
+
+        let x = arr.splice(1, 2, 'whatup', 'sup');  // returns the removed elements
+
+        console.log(arr);
+        console.log(x);
+
+        // splice can insert elements without any removals by setting deleteCount equal to 0
+
+        // if start is negative, you start from the end of the array and work left
+        arr.splice(-1, 0, 'dude', 'bruh');  // -1 start inserts elements starting at the second to last section
+
+        console.log(arr);
+
+
+
+        console.log('\n');
+        // arr.slice([start], [end])
+        // returns a new array copying all items from index start to end (not including end)
+            // if start and end are negative, it's the positions from the end of the array
+
+        // similar to str.slice, but instead of substrings, it makes sub arrays:
+        console.log(arr.slice(1,3));
+        console.log(arr.slice(-1));
+
+        // arr.slice() w/o any arguements is used to copy the array for further transformations that won't affect the original array
+
+
+        
+        console.log('\n');
+        // arr.concat(arg1, arg2)
+        // returns a new array
+        // arguements can be arrays or values
+        arr2 = [1, 2, 3];
+
+        let arr3 = arr2.concat([4, 5], 6);
+        
+        console.log(arr2);
+        console.log(arr3);
+
+
+
+        console.log('\n');
+        // arr.foreach(function(item, index, array) { do something to each item here... })
+        // allows us to run a function for every element of the array
+
+        ['John', 'Abby', 'Hannah'].forEach(console.log); // not sure why, but we don't have parentheses at the end of console.log
+
+        console.log('\n');
+
+        let arr4 = ['Grandpa', 'Grandma', 'babu'];
+
+        arr4.forEach( (item, index, array) => {
+            console.log(`${item} is at index ${index} in ${array}`);
+        });     // parentheses ends here
+
+        // I need to look into this further
+
+        console.log('\n');
+
+        // And if I wanted to do the same thing without an arrow function:
+        arr4.forEach( function(item, index, array) {
+            console.log(`${item} is at index ${index} in ${array}`);
+        });
+            // item: the element of the array
+            // index: the element's index
+            // array: the array itself
+
+            // Arrow functions remove the word "function" and then you put the arrow
+                // there are other differences, but for the above example are the same
+
+
+
+        console.log('\n');
+        // Searching
+
+        // these are pretty much the same as their string counterparts
+            // arr.indexOf(item, from) - returns index where found; if nout found, returns -1
+            // arr.lastIndexOf(item, from) - looks right to left
+            // arr.includes(item, from) - returns true if item is found
+
+            // these methods use ==== so if look for "0", it wont' find items === "false"
+
+        
+        // arr.find(function(item, index, array)) - if we have an array of objects, finds an object with a specific considition
+            // item: the element of the array
+            // index: the element's index
+            // array: the array itself
+
+        let users = [       // array of objects as elements
+            {id: 1, name: 'John'},
+            {id: 2, name: 'Jake'},
+            {id: 3, name: 'Andrew'}
+        ]
+        
+        let user = users.find(item => item.id == 1);    // if nothing is found, undefined would be returned
+        console.log(user.name);
+
+
+        // arr.find(function(item,index, array)) does the same thing as arr.find, but it returns the index of the element and -1 if it's not found
+
+        // arr.filter(function(item, index, array)) - returns an array of ALL matching elements
+            // find only returns the first element
+        
+        let user2 = users.filter(item => item.name[0] == 'J' );
+
+        console.log(user2);
+
+    </script>
+</body>
+</html>

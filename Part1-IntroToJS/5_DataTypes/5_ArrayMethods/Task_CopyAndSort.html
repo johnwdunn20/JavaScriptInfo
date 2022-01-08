@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function copySorted(arr) {
+            // need to copy without changing the original array
+            let copy = []
+            for (i of arr) {
+                copy.push(i);
+            }
+            return copy.sort();
+        }
+
+
+        let arr = ['HTML', 'JavaScript', 'CSS'];
+
+        let sorted = copySorted(arr);
+
+        console.log(arr);
+        console.log(sorted);
+
+        // another way to copy the array would be with arr.slice() and I don't enter any parameters. That would copy the entire array
+
+
+    </script>
+</body>
+</html>

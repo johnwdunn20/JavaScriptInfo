@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // iterable objects are a generalization of arrays - allow us to make any object usable in a for...of loop
+        // if an object isn't technically an array, but represents a collection (list, set) of something, then for...of is a great way to loop over it
+            // we can do this with strings
+        
+        // Ex:
+        // is not an array, but we might want to loop over it:
+        let range = {
+            from: 1,
+            to: 5,
+        };
+
+        // Symbol.iterator is a special built-in symbol
+        // we add this method to the object to make it iterable
+        // Steps:
+            // when for..of starts, it calls that method (errors if not found)
+
+        range[Symbol.iterator] = function() {
+
+            // then for..on works only with that returned object
+            
+            return {
+                current: this.from,
+                last: this.to,
+
+                    // when for..of wants the next value, it calls "next()" on that object
+                next() {
+                    if (this.current <= this.last) {    // so keep going untul current > last
+                        return { done: false, value: this.current++};   // increment current by 1
+                    } else {
+                        return {done: true};
+                    }
+                    // the result of "next()" must have the form "{done: Boolean, value: any}" where done=true means the iteration is finished
+                    
+                }
+
+            }
+        };
+
+        // now it works:
+        for (let num of range) {
+            console.log(num);
+        }
+
+        // the range object itself does not have the next() method
+        // instead, another object, the "iterator" is created to call range[Symbol.iterator]() and it's "next()" generates values for the iteration
+
+        // so the iterator object is seperate from the object it iterates over
+
+        // if you create a range object where range goes to infinity, next() will just keep calling it so you'll need a break;
+
+
+
+        // strings are already iterable so you don't need the Symbol.Iterator
+        
+
+
+
+
+
+    </script>
+</body>
+</html>

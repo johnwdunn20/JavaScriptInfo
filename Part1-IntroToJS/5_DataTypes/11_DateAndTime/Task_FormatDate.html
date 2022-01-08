@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function formatDate(date) {
+            let currentDate = new Date();
+
+            let diff = currentDate - date;
+
+            if (diff > -1000 && diff < 1000) {
+                return 'Right now';
+            } else if (diff > -60000 && diff < 60000) {
+                return `${diff / 1000} sec. ago`;
+            } else if (diff > -360000 && diff < 360000) {
+                return `${diff / 60000} min ago`;
+            }
+
+            // answer key used map to make sure we only get 2 digits of everything
+            return `${date.getDate()}.${date.getMonth()}.${date.getFullYear().toString().substring(2,4)} ${date.getHours()}:${date.getMinutes()}`;
+        }
+
+
+        console.log(formatDate(new Date(new Date - 1)));
+        console.log(formatDate(new Date(new Date - 30 * 1000)) );
+        console.log(formatDate(new Date(new Date - 5 * 60 * 1000)));
+        console.log(formatDate(new Date(new Date - 86400 * 1000)));
+
+
+
+
+
+    </script>
+</body>
+</html>

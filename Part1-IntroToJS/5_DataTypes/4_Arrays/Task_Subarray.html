@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // find the sum of contiguous subarray with the maximal sum of items
+        // don't actually need to return the array
+
+        // there's probably a more efficient way to do this
+
+        function getMaxSubSum(arr) {
+            let interimResult = 0;
+            let result = [];
+            for (let i of arr) {
+
+                for (let k of arr) {
+
+                    interimResult = 0;
+
+                    for (let j of arr.slice(arr.indexOf(k), arr.indexOf(i) + 1)) {
+
+                        interimResult += +j;
+                    }
+
+                    result.push(+interimResult);
+                }
+            }
+
+            return Math.max(...result)
+        }
+
+        console.log(getMaxSubSum([-1, 2, 3, -9]))
+        console.log(getMaxSubSum([2, -1, 2, 3, -9]) )
+        console.log(getMaxSubSum([-1, 2, 3, -9, 11]) )
+        console.log(getMaxSubSum([-2, -1, 1, 2]) )
+        console.log(getMaxSubSum([100, -9, 2, -3, 5]) )
+        console.log(getMaxSubSum([1, 2, 3]) )
+
+
+        // here's the more efficient way to do this
+
+        function getMaxSubSum2(arr) {
+            let maxSum = 0;
+            let partialSum = 0;
+
+            for (let i of arr) {
+                partialSum += i; // add eah element to the array
+                maxSum = Math.max(maxSum, partialSum); // holding the maximum
+                if (partialSum < 0) partialSum = 0; // zero if negative
+            }
+
+            return maxSum;
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let styles = ['Jazz', 'Blues'];
+
+        styles.push('Rock-n-Roll');
+
+        // this will replace the middle value for any array of odd length 
+        styles[Math.floor(styles.length / 2)] = 'Classics';
+        console.log(styles);
+        
+        let firstValue = styles.shift();
+        console.log(firstValue);
+
+        styles.unshift('Rap', 'Reggae');
+
+        console.log(styles);
+
+    </script>
+</body>
+</html>

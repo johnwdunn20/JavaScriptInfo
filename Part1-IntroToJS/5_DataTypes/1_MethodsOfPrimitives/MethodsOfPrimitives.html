@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // JS allows us to work with primitives as if they were objects - we can call methods
+        // 7 primitive types (everything but object) (so Symbol is primitive)
+        
+        // primitives must be as fast and lightweight as possible
+        // So in order to use methods on primitives, a special "object wrapper" that provides the extra functionality is created and then destroyed
+
+        // Object wrappers are different for each primitive type and are called String, Number, Boolean, and Symbol and each provides a different set of methods
+
+        let str = 'Hello';
+
+        console.log(str.toUpperCase());
+
+        // Here's what's actually happening:
+            // 1. in the moment of accessing its property, a special object is created that knows the value of string and has methods
+            // 2. the method runs (in this case returns a new string)
+            // 3. The special object is destroyed, leaving the primitive "str" alone
+
+
+        // Note: don't use constructors with String/Number/Bookean (possible only for historical reasons)
+
+        // Null/Undefined don't have methods
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // returns name of top paid person
+        function topSalary(salaries) {
+            let max = 0;
+            let maxName = null; // want to return null, not undefined if an empty object is passed in
+            
+            for (let [name, salary] of Object.entries(salaries)) {
+                if (max < salary) {
+                    max = salary;
+                    maxName = name;
+                };
+            };
+
+            return maxName;
+        }
+
+        let salaries = {
+
+        };
+
+
+        console.log(topSalary(salaries))
+
+    </script>
+</body>
+</html>

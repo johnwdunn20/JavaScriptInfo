@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function groupById(arr) {
+            let result = {};
+            for (let user of arr) {
+                result[user.id] = user;
+            }
+            return result;
+        };
+
+        let users = [
+        {id: 'john', name: "John Smith", age: 20},
+        {id: 'ann', name: "Ann Smith", age: 24},
+        {id: 'pete', name: "Pete Peterson", age: 31},
+        ];
+
+        let usersById = groupById(users);
+
+        console.log(usersById);
+
+
+        // now do the same thing with the reduce method
+        function groupById2(arr) {
+            let result = {};
+            arr.reduce( function(accum, current) {
+                return result[current.id] = current
+            }, 0);
+            return result;
+        };
+
+        let usersById2 = groupById2(users);
+
+        console.log(usersById2);
+
+        // Here's the solution they have:
+        function groupbyId3(array) {
+            return array.reduce((obj, value) => {
+                obj[value.id] = value;
+                return obj;
+            }, {})
+        }
+
+        let usersById3 = groupById2(users);
+
+        console.log(usersById3);
+
+
+    </script>
+</body>
+</html>

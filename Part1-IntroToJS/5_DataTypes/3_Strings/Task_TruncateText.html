@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        function truncate(str, maxlength) {
+            if (str.length <= maxlength) return str;
+            return str.slice(0, maxlength) + '...'
+        }
+
+        console.log(truncate('hey how are you doing today?', 8))
+
+        // for fun, also ceate a function that returns elipses at a space
+        function truncate2(str, maxlength) {
+            if (str.length <= maxlength) return str;
+            console.log(str.lastIndexOf(' ', maxlength))
+            return str.slice(0, str.lastIndexOf(' ', maxlength)) + '...'   
+
+        }
+
+        console.log(truncate2('hey how are you doing today?', 8))
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Set - a set of values (without keys) where every value must be unique
+        // Main Methods:
+
+        let mySet = new Set();  // creates the set
+        // new Set(iterable)    - iterable is optional
+
+        mySet.add('John');
+        // set.add(value) - adds the value and returns the set itself
+
+        mySet.add('Hannah');
+        mySet.add('Abby');
+        mySet.add('John');
+        // Main Feature of Sets: if you add a duplicate value to a set, it doesn't do anything
+
+        console.log(mySet)
+
+        // other main methods:
+            // set.delete(value) - removes value, returns true if value existed
+            // set.has(value) - true if value exists, false if it doesn't
+            // set.clear() - removes everything from the set
+            // set.size - count of elements
+
+        
+        console.log('\n');
+        // Iteration over Set
+        for (let value of mySet) console.log(value);
+
+        console.log('\n');
+        // Set also has: set.forEach((value, valueAgain, set) => {something here} });
+            // on second iteration, valueAgain is the first iteration's value
+                // repeats like this for every subsequent iteration
+            // Note: on first iteration, valueAgain is the first iterations's value
+
+        mySet.forEach((value, valueAgain, set) => console.log(value + valueAgain));
+
+
+        console.log('\n');
+        // Set has the same methods as Map for iterators:
+            // set.keys()
+            // set.values()
+            // set.entries() - returns an iterable object for entries [value, value]
+            console.log(mySet.entries())
+
+        
+
+
+    </script>
+</body>
+</html>

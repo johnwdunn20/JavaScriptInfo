@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // backticks allow strings to span multiple lines
+        // can also use \n for new line
+
+        // \u for unicode - allows us to use symbols (copyright, chines symbols, smilies, etc)
+        console.log('\u{1F60D}'); // heart eyes smiley
+
+
+        // String length
+        console.log('hello'.length);
+
+        // Accessing characters
+        let str = 'hello';
+        console.log(str[0]);
+
+        console.log('\n');
+
+        // Iterate over characters with the "for...of" loop
+        for (let char of 'Hello') {
+            console.log(char);
+        }
+
+        console.log('\n');
+
+        // strings are immutable so if you want to change a character, you need to create a new string
+
+        // Changing case
+        console.log(str.toUpperCase());
+        console.log(str.toLowerCase());
+
+        console.log('\n')
+
+
+        // Searching for a substring
+        // str.indexOf(substr, pos) -> looks for substring in str, starting at position pos (optional parameter)
+            // returns position where match was found or -1 if not found
+        let greeting = 'Hello everybody here!';
+
+        console.log(greeting.indexOf('ever'));
+
+        // to find EVERY position, we can use a loop
+        let pos = 0
+        while (true) {
+            let foundPos = greeting.indexOf('e', pos);
+            if (foundPos == -1) break;      // need to test equality to -1 b/c 0 (aka false) is the first position in the string
+
+            console.log(`Found "e" at ${foundPos}`);
+            pos = foundPos + 1 // move to position after one where 'e' was found
+        }
+
+        // can also use "if (~str.indexOf('Widget'))" b/c ~ is a bitwise operator where ~n requals -(n+1)
+            // this trick isn't recommended but is often used in old code so good to know
+
+        console.log('\n');
+
+        console.log(greeting.lastIndexOf('e')) // str.lastIndexOf(str, pos) searches from the end of the string
+
+
+        // str.ncludes(subst, pos): if we need to test if the str contains sbstr -> returns true/false
+        console.log(greeting.includes('e'));
+
+        // str.startsWith(sbstr) and str.endsWith(sbstr) do exactly what you'd expect them to do
+
+
+        console.log('\n');
+        // Getting a substring: substring substr, and slice
+
+        let text = 'stringify'
+
+        // str.slice(start [, end]) -> gets substring from start to end (not including)
+
+        console.log(text.slice(4, 8));
+        // can use negative numbers to start from the end
+        console.log(text.slice(-4, -1)); //starts at 4th position from the right, ends at first position from the right
+
+        // str.substring(start [, end]) - same as slice, but allows "start" to be greater than "end"
+            // negatives do not work like in slice and are treated as 0
+        console.log(text.substring(2, 6))
+        console.log(text.substring(6, 2))
+            // I don't really get how these return the same thing
+
+        // str.substr(start [, length])
+            // if "start" is negative, we start from the end (then move right)
+        console.log(str.substr(2, 4));
+        console.log(str.substr(-4, 2));
+        // Note: non-broswer environments may fail to support substr
+
+        // str.trim() -> reoves spaces from beginning and end of the string
+        // str.repeat(n) -> repeates the strin n times
+
+        
+
+
+    </script>
+</body>
+</html>

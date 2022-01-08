@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sumInput() {
+            let arr = [];
+            do {
+                arr.push(prompt('Enter a value', ''));
+            } while (arr.slice(-1)[0] != '' && isFinite(arr.slice(-1)[0]) && arr.slice(-1)[0] !== null) // criteria for when is a number. Ends if not a number, canceled, or an empty string
+            
+
+            console.log(arr);
+            // remove last item
+            arr.pop()
+
+            // returns sum of array
+            let result = 0;
+            for (let i of arr) {
+                result += +i;
+            }
+
+            return result;
+        }
+
+        console.log(sumInput());
+
+    </script>
+</body>
+</html>

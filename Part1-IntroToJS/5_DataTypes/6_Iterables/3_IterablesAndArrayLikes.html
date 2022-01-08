@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // iterable are objects that implement the Symbol.iterator method
+        // Array-likes are objects that have indexes and length so they look like arrays
+
+        // strings are both iterable AND array-like    
+
+
+        // Array.from(arrayLike) - takes an iterable OR an array-like value and makes a "real" array from it
+            // this allows us to call methods on it (pop, push, etc)
+        
+        let arrayLike = {   
+            0: 'hello',
+            1: 'world',
+            length: 2,
+        }
+
+        let arr = Array.from(arrayLike);
+        console.log(arr.pop());
+        // we could also do this with an iterable
+
+        // full syntax: Array.from(obj[, mapFN, thisArg])
+            // mapFn and thisArg allow us to apply a function to each item
+
+
+
+        // Object that can be used in for..of are iterable
+        // iterable implements the Symbol.iterator method
+            // the result of this method is the iterator
+        // an iterator must have the method next() that returns an object {done: Boolean, value: any}
+
+        // Built-in iterables like strings and arrays also implement Symbol.iterator
+
+
+
+    </script>
+</body>
+</html>

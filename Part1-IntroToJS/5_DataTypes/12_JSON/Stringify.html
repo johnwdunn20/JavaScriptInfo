@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Converting objects to JSON
+        // JSON is a string
+        // if we have a complex object we'd like to convert to a string (to send over a network or output for logging purposes) 
+        // JSON i a general format to represent values and objects
+            // many languages support JSON
+
+        // JSON.stringify() - converts objects to JSON
+        // JSON.parse() - converts JSON back to an object
+
+
+        let student = {
+            name: 'John',
+            age: 27,
+            isAdmin: false,
+            courses: ['html', 'css', 'js'],
+            wife: null,
+        };
+
+        let json = JSON.stringify(student);
+
+        console.log(json);
+        console.log(typeof(json)); // is a string now
+
+        // after JSON.stringify(), the sting is called a "JSON-encoded" or "serialized" or "stringified" or "marshalled" object
+
+        // JSON-encoded objects:
+            // always use double quotes (any single quotes in object are converted to double when we stringify)
+
+        // stringify can be applied to primitves as well ( in addittion to Objects, Arrays): strings, numbers, boolean, null
+
+        console.log(JSON.stringify(1));
+        console.log(typeof(JSON.stringify(1)));
+
+
+        // some Javascript-specific object properties are skipped by JSON.stringify:
+            // Function properties (methods)
+            // symbolic keys and values
+            // properties that store undefined
+        
+        // nested objects are converted automatically:
+
+        let meetup2 = {
+            title: "Conference",
+            room: {
+                number: 23,
+                participants: ["john", "ann"]
+            }
+        };
+
+        console.log(JSON.stringify(meetup2));
+
+        // but we can't have circular references between 2 different objects
+
+
+
+        console.log('\n');
+        // Excluding and transforming: replacer
+        // JSON.stringify(value[, replacer, space])
+            // (this is the full syntax)
+            // value: a value to encode
+            // replacer: array of properties to encode or a mapping function ( function(key, value) )
+            // space: amount of space used for formatting
+
+        // replace and space are used when we need to fine-tune the replacement process (like filtering out circular references)
+
+        let room = {
+            number: 23,
+        };
+
+        let meetup = {
+            title: 'Conference',
+            participants: [{name: 'John'}, {name: 'Alice'}],
+            place: room,    // meetup references room
+        };
+
+        // now room references meetup so the references are circular:
+        room.occupiedBy = meetup;
+
+        // including everything but room.occupiedBy which would cause a circular reference
+        // using an array as the replacer:
+        console.log(JSON.stringify(meetup, ['title', 'participants', 'place', 'name', 'number']))
+
+        // now everything but occupiedBy is serialized 
+        // but the list of properties is very long so we can use a function instead of an array as the replacer:
+
+        console.log( JSON.stringify( meetup, function replacer(key, value) {
+            console.log(`${key}: ${value}`);    // just logging to see what's going on
+            return  (key == 'occupiedBy') ? undefined: value;   // excluding occupiedBy
+        }))
+
+        // the replacer function gets every key/value pair including nested objects and array items
+        // the value of "this" inside the replacer function is the object that contain the current property
+
+        // the first call is special (why we get ":[object Object]")
+            // it uses a special wrapper object
+            // basicallly, the first key/value pari has an empty key and the value is the target object as a whole
+
+
+        console.log('\n');
+        // space
+            // the third arguement of stringify 
+
+        // it's the number of spaces to use for pretty formatting
+        // without it, all stringified objects have no indents or extra spaces
+        // "space" is used exclusively for a nice output
+
+        // space = 2 tells JS to show nested objects on multiple lines with indentation of 2 spaces inside an object:
+
+        let user = {
+            name: 'John',
+            age: 25,
+            roles: {
+                isAdmin: false,
+                isEditor: true,
+            },
+        };
+
+        console.log(JSON.stringify(user, null, 2));  // if we used 4, it would be indented 4 spaces
+
+        // the third arguement can also be a string - then each line is just that string instead a number of spaces
+        
+        
+        console.log('\n');
+        // Custom "toJSON"
+        // like "toString" for string conversion, an object may provide a "toJSON" method for to-JSON conversion
+            // JSON.toStringify automaticallys calls it if availabe
+
+        
+        let apartment = {
+            number: 23
+        };
+
+        let building = {
+            title: 'Palms',
+            date: new Date(Date.UTC(2017, 0, 1)),
+            apartment
+        };
+
+        console.log(JSON.stringify(building, null, 2));
+        // date becomes a string because dates have the built-in method "toJSON"
+
+        // we can also add a custom toJSON to an object:
+
+        let apartment2 = {
+            room: 23,
+            toJSON(key) {
+                return this.room;
+            }
+        };
+
+        let building2 = {
+            title: 'Conference',
+            apartment2
+        };
+
+        console.log(JSON.stringify(apartment2));    // 23
+
+        console.log(JSON.stringify(building2));
+        
+        // above, toJSON is used both for the direct call "JSON.stringify(room)" and when room is nested in meetup
+        // I think toJSON method automatically gets called whenever we stringify an object
+
+
+
+        console.log('\n');
+        // JSON.parse(str, [reviver])
+            // str: JSON-string to parse
+            // revivier: optional function(key,value) that's called for each key/value pair and can transform the value
+
+
+        // stringified array:
+        let numbers = "[0, 1, 2, 3]";
+
+        numbers = JSON.parse(numbers);
+
+        console.log(numbers[1]);    // 1
+
+
+        // nested object:
+        let userData = '{ "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2,3] }';
+
+        let userD = JSON.parse(userData);
+
+        console.log(userD.friends[1]);
+
+
+        console.log('\n');
+        // Parse reviver
+        // Ex:
+        let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}';
+        // without a reviver function, JSON.parse won't know that the "date" key's value is Date object
+
+        let strObj = JSON.parse(str, function(key, value) {
+            if (key == 'date') return new Date(value);
+            return value;
+        });
+
+        console.log(strObj.date.getDate()); // without the reviver function that says to treat key == 'date' as a Date object, this would error
+
+
+        
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // scenarios to account for:
+            // is a string -> repeat; is 0 so isNan says false and isFinite says true
+            // is an empty string -> return null; is 0 so isNan says false and isFinite says true
+            // is canceled aka NaN -> return null; isNaN says true and isFinate says false
+            // is a number -> return number
+
+        function readNumber() {
+            let input;
+
+            do {
+                input = prompt('Enter a valid number', '');
+            } while (!isFinite(input));
+
+            if (input === null || input === '') return null;
+
+            return +input;
+        }
+
+        console.log(readNumber());
+
+        console.log('\n')
+
+        let a = 1;
+        let b = ' ';
+        let c = 'hey';
+
+
+        // isNaN and isFinite first convert it to a number
+        console.log(Number(a));
+        console.log(Number(b));
+        console.log(Number(c));
+        console.log('\n');
+
+        console.log(isNaN(a));
+        console.log(isNaN(b));
+        console.log(isNaN(c));
+        console.log('\n');
+
+        console.log(isFinite(a));
+        console.log(isFinite(b));
+        console.log(isFinite(c));
+        console.log('\n');
+
+    </script>
+</body>
+</html>

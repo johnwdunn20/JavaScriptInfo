@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // Objects are used for storing keyed collections
+        // Arrays are used for storing ordered collections
+
+        // Map: is a collection of keyed data items, just like and Object, but the main difference is that Map allows keys of any type
+            // in Objects, property keys are strings or symbols
+            // In both Objects and Maps, keys must be unique
+
+        let map = new Map()     // creates the map
+
+        // map.set(key, value) - stores the value by key
+        map.set(1, 'num1');     // numeric key
+
+        // we can also chain the set calls
+        map.set('1', 'str1').set(true, 'bool1'); // string key and boolean key
+
+        console.log(map);
+
+        console.log(map.get(1));    // map.get(key) - returns the value by key - returned undefined if key doesn't exist
+        console.log(map.has(1));    // true if key exists, false if doesn't exist
+        
+
+        // map.delete(key) - removes the value by key
+        // map.clear() - removes everything in the map
+        // map.size() - returns the current element count
+            // map doesn't have a length property
+
+
+        // Note: map[key] works but then you're treating the map as a plain JS object so DONT DO THIS
+
+
+        console.log('\n');
+        // Maps can use objects as keys
+            // objects can't use other objects as keys
+
+        let john = { name: 'John'};
+
+        let myMap = new Map();
+
+        myMap.set(john, 123)
+
+        console.log(myMap.get(john));
+
+
+        console.log('\n');
+        // Iterating over Map
+        // 3 methods:  
+            // map.keys() - returns an iterable for keys
+            // map.values() - returns an iterable for values
+            // map.entries() - returns an iterable for entries [key, value]
+                // map.entries() is the default in for ..of
+
+        // unlike objects, iterating over a mpa preserves the order
+
+        // when a Map is created, we can pass an array (or another iterable) with key/value paris for initilization:
+        let recipeMap = new Map([
+            ['tomato', 10],
+            ['cucumber', 15],
+            ['carrots', 22],
+        ]);
+
+        for (let veggie of recipeMap.keys()) {
+            console.log(veggie);
+        }
+
+        console.log('\n');
+        for (let veggie of recipeMap.values()) {
+            console.log(veggie);
+        }
+
+        console.log('\n');
+        for (let veggie of recipeMap.entries()) {
+            console.log(veggie);        // this logs arrays
+        }
+
+        console.log('\n');
+        // could also do:
+        for (let [key, value] of recipeMap.entries()) {
+            console.log(key + ' - ' + value);
+        }
+
+
+
+        console.log('\n');
+        // Map also has a built-in forEach method, similar to Array
+        recipeMap.forEach( (value, key, map) => {
+            console.log(`${key}: ${value} in ${map}`);  // here map logs "[object Map]" not the actual Map
+        });
+
+
+        console.log('\n');
+        // Object.entries(obj)
+            // creates a Map from a plain Object
+        let obj = {
+            name: 'John',
+            age: 27,
+        }
+        let map2 = new Map(Object.entries(obj));    // Object.entries returns the array of key/value pairs [ ["name","John"], ["age", 30] ], which is what Map needs
+
+        console.log(map2.get('name'));
+
+
+        // Object.fromEntries
+            // does the reverse of Object.entries, given an array of key-value pairs, it returns an object
+
+        let fruitArr = [
+            ['banana', 1],
+            ['apple', 3],
+            ['meat', 8],
+        ]
+
+        let fruitObj = Object.fromEntries(fruitArr);
+
+        console.log(fruitObj);
+
+        // Object.fromEntries can also be used to get a plain object from a Map
+        let recipeObj = Object.fromEntries(recipeMap);
+            // we could also use map.entries() b/c it returns an iterable of key/value pairs
+            // but we don't need it because a Map is an iterable and Object.fromEntries just expects an iterable of key/value pairs, not necessarily an array
+
+        console.log(recipeObj);
+
+
+
+
+    </script>
+</body>
+</html>

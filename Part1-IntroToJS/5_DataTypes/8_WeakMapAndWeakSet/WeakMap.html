@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+            // I think this effects the intellisense
+
+
+        // Google WeakMap if I need this
+
+        // in a regular Map, if we use an object as a key, and then delete the object, we can still acces the object with map.keys()
+            // the object is still stored in memory
+        // this isn't true in WeakMap
+            // it will be removed, but you don't know when - has to do with JS Enginge's Garbage Collection system (I guess?)
+
+        // WeakMap
+            // keys must be objects
+            
+        
+        let weakMap = new WeakMap();    // Note: the "W" is capitalized
+
+        let obj = {};
+
+        weakMap.set(obj, 'ok');
+
+        console.log(weakMap);
+
+        // Use Cases:
+            // Caching
+            // Additional data storage - if working with an object that belongs to another code
+
+
+
+
+
+    </script>
+</body>
+</html>

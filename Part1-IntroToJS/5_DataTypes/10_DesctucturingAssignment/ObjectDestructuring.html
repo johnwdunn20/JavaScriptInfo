@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Object destructuring
+            // stores the property values in variables
+        
+        let options = {
+            title: 'Menu',
+            width: 100,
+            height: 200,
+        };
+
+        let { width, title, height} = options;
+
+        console.log(title);
+        // order doesn't matter, the property name does
+        
+        // if we want to assign a property to a variable with anothe name, we can use a colon:
+        let {width: w, height: h, subtitle: s = 'Explanation here' } = options;
+            // like Array Destructuring, we can set defaults with "="
+                // only evaluated if there is no value supplied
+        
+        console.log(h);
+        console.log(s);
+
+
+        console.log('\n');
+        // "...rest"
+        let person = {
+            name: 'John',
+            age: '27',
+            car: 'Acura',
+            make: 'MDX',
+        };
+
+        let {name, age, ...rest} = person;
+
+        console.log(rest);
+
+
+        // if we already have the variables delcared, we can wrap the code block in parentheses:
+            // otherwise it'll error
+
+        let car;
+        let make;
+        ({name, age, car, make} = person);
+
+        console.log(name);
+
+
+        
+
+
+
+    </script>
+</body>
+</html>

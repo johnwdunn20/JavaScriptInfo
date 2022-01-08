@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // reduce / reduceRight
+
+        // to iterate over an array, we can use forEach, for, or for...of
+        // to iterate and return the data of each element we can use map
+
+        // arr.reduce and arr.reduceRight are used to calculate a single value based on the array
+        // the function is applied to all array elements on after another and "carries" it's results onto the next call
+            // arr.reduceRight does the same thing, but works right to left on the array
+
+        // arr.reduce(function(accumulator, item, index, array) {something here...}, [initial]);
+            // accumulator: is the result of the previous function call (equals intitial if initial is provided)
+            // item: the current array item
+            // index: the current array item's index
+            // array: the whole array
+            // initial: the initial value of accumulator (it's optional, but recommended that we always specify it)
+
+        let arr = [1, 2, 3, 4, 5];
+
+        // gets the sum of the array
+        let sum = arr.reduce( (sum, current) => sum + current, 0)
+        // accumulator is "sum", initialized to 0
+        // current is item
+        console.log(sum);   // 15
+
+
+
+        // Array.isArray(arr)
+        // can't use typeof to tell if something is an array because an array's type is object
+
+        console.log(Array.isArray({})); // false, is an object and not an array
+
+        console.log(Array.isArray([])); // true
+
+
+        console.log('\n');
+        // thisArg
+        // almost all array methods that call functions like find, filter, map etc (but not sort!) accept an optional parameter, thisArg
+        // rarely used
+        // value of thisArg becomes this for the function ( so don't actually put "thisArg" there, just put the arguement you want)
+        // syntax: arr.find(func, thisArg)
+
+
+        // Ex:
+        let army = {
+            minAge: 18,
+            maxAge: 27,
+            canJoin(user) {
+                return user.age >= this.minAge && user.age < this.maxAge;
+            },
+        };
+
+        let users = [
+            {age: 16},
+            {age: 22},
+            {age: 20},
+            {age: 34},
+        ];
+
+        // find users for who army.CanJoin returns true
+        let soldiers = users.filter(army.canJoin, army)
+
+        console.log(soldiers);
+
+        // but it's more common (and easier to read) to do:
+        let soldiers2 = users.filter( user => army.canJoin(user));
+        console.log(soldiers2);
+
+
+        console.log('\n');
+        // arr.some(fn) / arr.every(fn) - called on every element and if any/all results are tru, returns true
+        // we can use every to compare arrays
+        function arraysEqual(arr1, arr2) {
+            return arr1.length === arr2.length && arr1.every( ( value, index) => value === arr2[index]); 
+        }
+
+        console.log(arraysEqual([1, 2], [1, 2]));
+
+
+        // arr.fil(value, start, end) - fills the array with repeating value from index start to end
+        // arr.copyWithin(target, start end) - copies its elements from position start to position end into itself at position target (overwrites existing)
+        // arr.flat(depth) / arr.flatMap(fn) - create a new flat array from a multidimensional array
+
+        // there are more array methods I can always google
+
+
+
+
+
+
+    </script>
+</body>
+</html>

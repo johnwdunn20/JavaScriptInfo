@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Smart Function Parameters
+            // when a function has many parameters, most of which are optional, how do we remember the order?
+            // Solution: passing parameters as an object - then the function destructurizes them into variables:
+
+        let options = {
+            title: 'My menu',
+            height: 300,
+            items: ['first', 'sec', 'third', 'fourth'],
+        };
+
+        function showMenu({
+            title = 'Untitled',
+            width: w = 200,     // width in the object goes to w
+            height: h = 100,    // height in the object goes to h
+            items: [item1, item2, ...rest] = ['one', 'two']          // items first element goes to item1, second to item2, rest to rest
+        } = {}) {               // = {} is the default value for the whole object which allows us to pass in any empty object. This way, there's always something to destructurize
+            console.log(`${title} ${w} ${h}`);
+            console.log(item1);
+            console.log(rest);
+        }
+
+        showMenu(options);
+
+        // the full syntax is: 
+            // function({
+            //     incomingProperty: varName = defaultValue
+            //     ...
+            // })
+
+        console.log('\n');
+        // to show all defaults, need to pass in an empty object:
+        showMenu({});
+
+    </script>
+</body>
+</html>

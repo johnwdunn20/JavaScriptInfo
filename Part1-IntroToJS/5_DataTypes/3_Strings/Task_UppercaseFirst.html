@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ucFirst(str) {
+            if (!str) return str;   // check that str isn't empty because then str[0] is undefined and we get an error
+
+            let firstLetter = str.slice(0, 1).toUpperCase();
+            let otherLetters = str.slice(1).toLowerCase();
+            return firstLetter + otherLetters;
+        }
+
+        console.log(ucFirst('testING'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // arrays and strings are the most widely used built-in iterables
+            // you don't need Symbol.iterator to us a for..of loop on them
+
+        // to see how this iterator works, we are going to iterate over a string using direct calls
+            // I don't think we need to define Symbol.iterator's next() method like we did in the last example because it's already built in to the string type
+                // should probably double check this
+
+        let str = 'Hello';
+
+        let iterator = str[Symbol.iterator]();
+
+        while (true) {
+            let result = iterator.next()
+            if (result.done) break;          // so break when done is true - I think {done: Boolean, value: any} is already built in to strings
+            console.log(result);        // log output 1 by 1
+        }
+
+
+        // we rarely do this in practice but would allow us to specify how we iterate if we'd like (van iterate some, then do something else, then go back to iterating)
+
+    </script>
+</body>
+</html>

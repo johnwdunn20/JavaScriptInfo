@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Objects let us store keyed collections of values
+        // Arrays are an ordered collection
+            // Objects have no methods to manage the order of elements
+        
+        // 2 ways to declare an array:
+        let arr1 = new Array();
+        let arr2 = [];      // more common way
+
+        // can also declare the array with intial elements
+        let fruits = ['apple', 'orange', 'banana'];
+
+        // array elements are numbered with index 0
+        console.log(fruits[0]) // first element
+        console.log(fruits[1])
+
+        // we can replace an element
+        fruits[2] = 'Pear';
+
+        // add a new element
+        fruits[3] = 'lemon';
+
+        // conout of elements in the array
+        console.log(fruits.length);
+
+        // arrays can store elements of any type:
+        let arr = ['Apple', 12, {name: 'John'}, true, function() {console.log('hello');}, true]
+
+        console.log(arr[4]);
+
+        console.log('\n');
+
+
+        // Methods pop/push and shift/unshfit
+        // Arrays are used for queues: queues in computer science means an ordered collection of elements
+        // queue has 2 operations:
+            // push appends an element to the end
+            // shift gets an element from the beginning and advances the queue so that the 2nd element becomes the first
+            // queues are first-in-first-out
+
+        // Arrays are also used for the data structure stack
+        // stack has 2 ooperations:
+            // push appends an element to the end (same as queue)
+            // pop tkes an element from the end
+            // stacks are last-in-first-out
+
+
+        // Arrays work as both a queue and a stack
+            // the computer science term for this is a 'dequeu'
+
+        
+        // pop: extracts the last element and returns it
+        let people = ['John', 'Hannah', 'Abby'];
+        console.log(people.pop());
+        console.log(people);   // 'Abby' is no longer there
+
+        // push: appends to the end of the array
+            // can be used to add multiple elements at once
+        people.push('Schmab');
+
+        // shift: extracts the first element of the array and returns it
+        console.log(people.shift());
+        console.log(people);
+
+        // unshift: adds element to beginning of the array
+            // can be used to add multiple elements at once
+        people.unshift('Ollie', 'Sabine');
+        console.log(people);
+
+
+
+    </script>
+</body>
+</html>

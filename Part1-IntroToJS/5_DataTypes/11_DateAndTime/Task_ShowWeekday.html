@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getWeekDay(date) {
+            let dayArr = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
+            let day = date.getDay();
+            return dayArr[day];
+        }
+
+        let date = new Date(2012, 0, 3);
+        console.log(getWeekDay(date));
+
+    </script>
+</body>
+</html>

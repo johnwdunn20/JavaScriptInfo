@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // Arrays, Maps, and Sets all have methods:
+            // .keys()        
+            // .values()
+            // .entries()
+        
+        // these methods are generic and should be implemented if we ever create a data structure of our own
+
+        // plain objects support similar methods but the syntax is a little different: 
+            // Object.keys(obj)
+            // Object.values(obj)
+            // Object.entries(obj)
+                // entries returns a real array, not an iterable
+
+        let user = {
+            name: 'john',
+            age: 27,
+        };
+
+        console.log(Object.keys(user));
+        console.log(Object.values(user));
+        console.log(Object.entries(user));
+
+        console.log('\n')
+        for (let value of Object.entries(user)) {
+            console.log(value);
+        }
+
+
+        console.log('\n');
+        // Transforming objects
+        
+        // objects don't have the methods that exist for arrays like map, filter, etc
+        // but we can apply them by converting the object to an array, applying the method, and then converting the array back to an object
+
+        // Object.entries(obj) - gets an array of key/value pairs from obj
+        // Object.fromEntries(array) - gets an object from an array
+        
+        let prices = {
+            banana: 1,
+            orange: 2,
+            meat: 4,
+        };
+
+        let doublePrices = Object.fromEntries(
+            Object.entries(prices).map( ([key, value]) => [key, value * 2])
+        );
+
+        console.log(doublePrices.meat); // 8
+
+
+
+
+    </script>
+</body>
+</html>

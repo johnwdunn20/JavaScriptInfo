@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Transforming an Array
+
+        // map
+        // arr.map(function(item, index, array)) - calls the function for each element of the array and returns the results
+            // I think map returns a new array while foreach doesn't return anything??
+
+        let names = ['John', 'Hannah', 'Abigail'];
+        let nameLengths = names.map(item => item.length);
+        console.log(nameLengths);
+
+        // could also write:
+        let nameLengths2 = names.map(function(item) {
+            return item.length;
+        });
+            // same as the arrow function
+            // need to explicitly say the return
+
+        console.log(nameLengths2);
+        
+
+
+        console.log('\n');
+        // arr.sort(fn)
+        // modifies the array itself (and also returns an array, but we usually ignore that because it's changing the array itself)
+        names.sort();
+        console.log(names); // items are always sorted as strings by default
+
+        // to use a sorting order other than the default, we need to supply a function as the arguement or arr.sort()
+        // to sort numerically:
+        function compareNumeric(a, b) {
+            if (a > b) return 1;
+            if (a == b) return 0;
+            if (a < b) return -1;
+        }
+        let arr = [4, 5, 17, 3];
+
+        arr.sort(compareNumeric);
+
+        console.log(arr);
+
+        // the function walks the array comparing the items in the sorted order
+            // JS optimized the function using quicksort or Timsort usually
+
+        // a comparison function is only required to return a positive number to say "greater" and a negative number to say "less"
+        // so we could do this to sort numerically:
+        arr = [4, 5, 17, 3];
+
+        arr.sort(function(a,b) { return a-b;});
+
+        console.log(arr)
+
+        // and the same thing as an arrow function:\
+        arr = [4, 5, 17, 3];
+
+        arr.sort( (a, b) => a - b);
+
+        console.log(arr);
+
+
+
+        console.log('\n');
+
+        // arr.reverse reverses the order of the elements
+
+        arr.reverse()
+        console.log(arr);
+
+
+
+        console.log('\n');
+        // split and join
+        // str.split(delimiter [, array max length]) - returns a string split by a given delimiter:
+        let users = 'John, Abby, Hannah, Mom, Dad';
+        
+        let usersArr = users.split(', ', 3);    // only want the first 3
+
+        console.log(usersArr);
+
+        // to split on each character:
+        console.log(users.split(''));
+
+        // arr.join(glue) - creates an array from an array
+        console.log(usersArr.join(' - '));
+
+
+
+
+    </script>
+</body>
+</html>

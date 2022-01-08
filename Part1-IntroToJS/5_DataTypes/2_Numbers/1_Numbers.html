@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // We can use e to write big numbers
+
+        let x = 9e9;
+
+        console.log(x);
+
+        let y = 8e-4
+
+        console.log(y);
+
+        // Hexadecimal numbers are often used to represent colors, encode characters, etc
+        // shortcut is "0x" and then the number
+        console.log(0xff); // 255
+        console.log(0xFF) // 255 - case doesn't matter
+        
+        console.log('\n');
+
+        
+        // toString(base)
+        // returns a string representation of num in the numeral system with the given base
+            // used for hex numbers (base 16), bitwise operators (base 2)
+            // Google this if I need it
+        let num = 255;
+        console.log(num.toString(16)); // ff
+
+        // if we want to call a method (ANY method, not just this example) directly on a number we use two dots:
+        console.log(244..toString(16));
+        // or we could write (244).toString(16)
+
+        console.log('\n');
+
+        // Rounding
+        // Math.ceil/floor/round/trunc
+        // trunc deletes all decimals
+        let a = 1.23
+        console.log(Math.floor(a));
+
+        // if we want to round to a specific decimal place, we can multiply and divide or use "toFixed(n)" where n is the number of decimal places
+        console.log(a.toFixed(1))   // returns a string, not a number
+
+        console.log('\n');
+
+        // Imprecise Calculations
+        // if numbers are too big, they return infinity
+        
+
+        // but loss of precision can happen like this:
+        console.log(0.1 + 0.2 == 0.3); // false
+        // this happens because:
+        console.log(0.1 + 0.2); // 0.30000000000000004
+        // it has to do with storing numbers as bits - If the decimal can be represented as a fraction where the denominator is a power of 2, we won't have this error. 0.3 is 3/10 and 10 is not a power of 2
+
+        // we get around taht with toFixed(n):
+
+        console.log(+(0.1 + 0.2).toFixed(2));       // need the leading + (aka the unary plus) b/c toFixed(n) returns a string
+            // Don't use equality checks when working with decimal fractions
+
+        // 64 bits, 52 of whcih store digits. 12 store decimals
+
+
+        // Tests: isFinite and isNan
+        // NaN is an error
+        // isNaN(value) converts the arguement to a number and then tests it for being NaN
+            // necessary b/c NaN does not equal NaN
+
+        // isFinite(value) returns true when a number is not NaN/Infinity/-Infinity
+        // can be used to test if something is a number:
+        let b = 'hey';
+
+        console.log(isFinite(b)); // false
+        // Note: empty or space-only strings are treated as 0
+
+        console.log('\n');
+
+        // parseInt and parseFloat
+        // numeric conversion with the "+" or "Number()" is strict. If a value is not a number it fails (returns NaN)
+
+        console.log(+'100px');    // but spaces at the beginning or end of a string are ignored
+
+        // parseInt and parseFloat will read a number from a string until they can't
+
+        console.log(parseInt('100px'));
+        console.log(parseFloat('12.5%'));
+
+        // parseInt and parseFloat will return NaN when no digits could be read
+
+        // can also do parseInt(value, base) or parseFloat(value, base) - the base is the base of the numeral system so they can parse hex numbers, binary numbers, etc
+
+
+        console.log('\n');
+
+        // Other math functions
+        // Math library contains a bunch of mathematical functions and constants
+            // google if I need something specific
+
+        console.log(Math.random()); // returns a number from 0 to 1 (not including 1)
+
+
+
+
+        
+
+
+    </script>
+</body>
+</html>

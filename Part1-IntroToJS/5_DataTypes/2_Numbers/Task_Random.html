@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // returns random number between min and max
+        function random(min, max) {
+            let result = new Array();
+            for (let i = min + 1; i < max + 1; i ++) {
+                result.push(i * Math.random());
+            }
+            console.log(result)
+            return result[Math.floor(Math.random() * (max))]
+        }
+
+        console.log(random(1,5));
+
+        // this is an answer for integers
+        function random2(min, max) {
+            let rand = min + Math.random() * (max + 1 - min);
+            return Math.floor(rand);
+        }
+    </script>
+</body>
+</html>
