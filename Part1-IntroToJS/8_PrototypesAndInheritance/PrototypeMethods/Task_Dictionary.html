@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // this isn't correct - see website for right answer
+
+        let dictionary = Object.create(null);
+
+        let dictProto = Object.create(null);
+
+        dictProto.toString = function() {
+            let result = [];
+            for (let key in dictionary) {
+                result.push(key);
+            }
+            return result.join(',');
+        };
+
+        Object.setPrototypeOf(dictionary, dictProto);
+
+
+        dictionary.apple = "Apple";
+        dictionary.__proto__ = 'test';
+
+        for (let key in dictionary) {
+            console.log(key);
+        }
+
+        console.log(dictionary);
+
+
+
+    </script>
+</body>
+</html>

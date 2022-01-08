@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // "let obj = {}" is the same as "let obj = new Object()" and "Object" is built-in object constructor function with its own prototype referencing a huge object with toString and other methods
+        // that's how we can do:
+        let obj = {};
+        document.write(obj);       // there exists a toString method in Object's prototype that lets us do this
+
+        // when we call "obj.toString" the method is taken from Object.prototype
+
+
+        // other built-in objects like Array, Date, Function, etc also keep methods in prototypes
+
+        // the Chrome developer console shows the inheritance
+        console.dir(obj);
+
+        console.log(obj);
+
+
+        // primitives are not objects but they can access their properties with prototypes (ie, Boolean.prototype, String.prototype, etc)
+
+
+        // we can also modify native prototypes (Not recommended!!)
+            // in modern programming, the only acceptable time to do this is for polyfilling aka making a substitute for a method that exists in the JS specification but is not yet supported by a particular JS engine
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // __proto__ is considered outdated and somewhat deprecated
+
+        // the modern methods are: 
+            // Object.create(proto, [descriptors]) - creates an empty object with the given proto as [[Prototype]]. Descriptors is optional and is used to create additional properties of the new object
+                // creating an object with the prototype is the optimal way (as opposed to adding prototype later) - this is what browsers are optimized for
+            // Object.getPrototypeOf(obj) - returns the [[Prototype]] of obj
+            // Object.setPrototypeOf(obj, proto) - set the [[Prototype]] of obj to proto
+
+
+        let animal = {
+            eats: true,
+        };
+
+        let rabbit = Object.create(animal, {
+            jumps: {
+                value: true
+            }
+        }); // creates a new object with animal as prototype
+
+        console.log(rabbit.eats);   // true
+
+        console.log(rabbit.jumps);  // true
+
+        console.log(Object.getPrototypeOf(rabbit) === animal);  // true
+
+        Object.setPrototypeOf(rabbit, {});   // change the prototype of rabbit to {}
+
+        console.log(Object.getPrototypeOf(rabbit)); // {}
+
+
+    </script>
+</body>
+</html>

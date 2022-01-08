@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // objects can be created with a constructor function like "new F()"
+        // If "F.prototype" is an object, then the "new" operator uses it to set [[Prototype]] for the new object
+            // Note: in this example "prototype" is just a property of the function "F" - the word prototype isn't special
+
+        let animal = {
+            eats: true,
+        };
+
+        function Rabbit(name) {
+            this.name = name;
+        }
+
+        Rabbit.prototype = animal;
+
+        let rabbit = new Rabbit('White Rabbit');    // rabbit.__proto__ == animal
+
+        console.log(rabbit.eats);   // true
+
+        // setting "Rabbit.protoype = animal" means that when a "new Rabbit" is created, assign its [[Prototype]] to "animal"
+
+
+        // every function has a default "prototype" even if we don't supply it
+        // the default prototype is an object with the only property constructor that points back to the function itself:
+
+        function Test() {};
+
+        console.log(Test.prototype.constructor == Test);    // true
+
+        let test = new Test();
+
+        console.log(test.constructor == Test);    // true        
+
+
+    </script>
+</body>
+</html>

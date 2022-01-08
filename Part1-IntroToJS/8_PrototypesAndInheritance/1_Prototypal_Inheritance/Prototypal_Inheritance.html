@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // Prototypal inheritance lets use take an object and create new objects with slight variants
+
+        // JS obect have a hidden property [[Prototype]] that is either null or references another object
+            // this object is called "a prototype"
+
+        let animal = {
+            eats: true,
+            walk() {
+                return 'Animal walks';
+            }
+        };
+
+        let rabbit = {
+            jumps: true,
+        };
+
+        rabbit.__proto__ = animal; // sets rabbit.[[Prototype]] = animal
+
+        // now if we read a property from rabbit and it's missing, JS will take it from animal
+
+        console.log(rabbit.eats);   // true
+
+        // so animal is the prototype of rabbit aka rabbit prototypically inherits from animal
+
+        // allows us to call methods, not just read properties
+        // we can also make a prototype chain (but references can't be circular)
+        let mouse = {
+            crawls: true,
+            __proto__: rabbit,
+        }
+
+        console.log(mouse.walk())
+
+        
+        // __proto__ is the getter/setter for [[Prototype]] - they aren;t the same thing
+
+
+        console.log('\n');
+        // "this" is not effected by prototypes at all - no matter where the method is found (in an object or its prototype) "this" is always the object before the dot
+
+        let dog = {
+            walk() {
+                if (!this.isSleeping) {
+                    return 'I walk';
+                }
+            },
+            
+            sleep() {
+                this.isSleeping = true;
+            }  
+        };
+
+        let ollie = {
+            name: 'Ollie',
+            __proto__: dog,
+        };
+
+        // modifies rabbit.isSleeping to true
+        ollie.sleep();
+
+        console.log(dog.isSleeping);    // true
+        console.log(ollie.isSleeping);  // undefined b/c no property in the prototype
+        
+        // "this" method call corresponds to the object, evaluated at call-time
+        // so methods are shared but the object state is not
+
+
+
+        // for...in iterates over inherited properties too
+
+    </script>
+</body>
+</html>
