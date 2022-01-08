@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // This chapter just covers "plain objects" aka objects
+        // But there are other types of objects (arrays, date, error, etc)
+        // people will say "Array Type" but formally they are all of the object typez
+
+        // there are 8 data types in JS, 7 are primitive
+        // the 8th is objects
+
+        // Objects are used to store keyed collections of various data and more complex entities
+        // objects are created with {} with an optional list of properties aka a key-value pair
+
+        // 2 syntaxes to create an object:
+        let user1 = new Object(); // "object constructor" syntax
+        let user2 = {}; // "object literal" syntax (usually this one is used)
+
+        // we can put properties in an object:
+        let user3 = {
+            name: 'John'
+            ,age: 27    // we could end each line with a comma (that works too) so I don't have to put the commas in front
+            ,'likes snow': true
+        };
+        // keys are a string (but you don't put quotes around them unless the key is multiple words and has a space) and values can be any type
+
+        // property values are accessible using the dot notation:
+        console.log(user3.name); // John
+        console.log(user3.age); // 27
+
+        // to add a value:
+        user3.isAdmin = true;
+
+        // to remove a property:
+        delete user3.age;
+
+        // multi-word keys use square brackets and quotes
+        user3['likes snow'] = false
+
+
+        // an object declared as a constant can be changed
+        const user4 = {
+            name: 'John'
+        };
+        user4.name = 'Hannah';
+        // const fixes the value of user, but not its contents
+
+
+
+
+
+    </script>
+</body>
+</html>

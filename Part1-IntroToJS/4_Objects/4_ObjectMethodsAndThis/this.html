@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // this
+        // used when an object method needs to access the information stored in the object to do its job
+        // to access the object, a method can use the "this" keyword
+        let user = {
+            name: 'John'
+            ,age : 27
+            , sayName() {
+                // 'This' is the current object
+                console.log(this.name);
+            }
+        };
+
+        user.sayName();
+
+        // during the execution of user.sayName() the value of 'this' is 'user'
+
+        // 'this' is not bound - it can be used in any function, even if it's not a method of an object:
+        function sayHi() {
+            console.log(this.name);
+        }
+
+        // the value of this is evaluated during runtime
+        let mom = {name: 'Karen'};
+        let dad = {name: 'Dan'};
+
+        // use the same function in 2 different objects
+        // Note: assigning the function to an object's method means we don't put () at the end of the function
+        mom.greet = sayHi;
+        dad.greet = sayHi;
+
+        // then when we call the functions, "this" has different values ("this" inside the function is the object before the dot)
+        mom.greet();
+        dad.greet();
+
+        // could also use square brackets to access the method:
+        mom['greet']();
+
+        // Note: Arrow functions have no "this"
+
+
+    </script>
+</body>
+</html>

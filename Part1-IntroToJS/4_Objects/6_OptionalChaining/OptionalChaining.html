@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Note: this is a recent addition to the language
+        // let's say we have a user with a non-existend property, address and street. It's okay that this user doesn't have these properies, but we don't want an error when we try and call them
+
+        let user = {};
+
+        // console.log(user.address.street)
+        // this will erros because user.address is undefined so trying to get user.address.street will fail
+        
+        // we could use if statements or the conditional operator "?":
+        console.log(user.address ? user.address.street : undefined);
+
+        // Or we could do:
+        console.log(user.address && user.address.street)
+
+        // But Optional Chaining "?." is the easiest way to do this:
+        // "?." stops the evaluation if the part to the LEFT of "?." is null or undefined
+
+        console.log(user?.address?.street);
+
+        // Note: Don't overuse the optional chaining - sometimes you'll want an error if a value doesn't exists so you know your code has an error
+
+        // the value before "?." ("user" in this example) must be declared, even if it's null or undefined for Optional Chaining to not throw an error
+
+        // Other Variants:
+        // ?.() is used to call a method) that may not exists, ie:
+        user.method?.() // calls 
+        
+        // ?.[] will also work if you want to use brackets to access a property instead of the dot, ie:
+        // user?.[address]; // Note: this throws an error and I'm not sure why
+
+        // works because "?." is not an operator but a special syntax construct
+
+        // ?. can also be used with delete
+        delete user?.name; // deletes user.name if user exists
+
+    </script>
+</body>
+</html>

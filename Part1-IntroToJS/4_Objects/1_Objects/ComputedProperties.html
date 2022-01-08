@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Computed Properties: using square brackets in an object literal when creating an object
+        let fruit = prompt('Which fruit to buy?', 'apple');
+
+        let bag = {
+            [fruit]: 5 // the name of the property is taken from the variable fruit
+        };
+
+        console.log(bag.apple);
+
+        // [fruit] means that the property name should be taken from from fruit
+
+        // works the same as:
+        let fruit2 = prompt('Other fruit?', 'banana');
+        let bag2 = {};
+        bag2[fruit2] = 8;
+
+        console.log(bag2.banana);
+        // but this way doesn't look as nice
+
+        // we can also use more complex expressions (ie, replace [fruit] with [fruit + 'computers'] as the value)
+
+        // when properties (the key-value pair) have the same name as a variable, we can use a shorthand:
+        function makeUser(name, age) {
+            return {
+                name, // same as name: name
+                age, // same as age: age
+                weight: 187,
+            }
+        };
+        // Note: an object property can use a name that's a keyword but a variable can't
+
+    </script>
+</body>
+</html>

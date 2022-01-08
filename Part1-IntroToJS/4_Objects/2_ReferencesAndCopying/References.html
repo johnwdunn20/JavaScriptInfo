@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // A variable assigned to an object stores not the object itself, but its "address in memory" aka a reference to the object
+
+        // so when an object is copied, the reference is copied, but the object itself is not duplicated
+        // ie: 
+        let user = {
+            name: 'John'
+        };
+        let admin = user;
+        // we can use either admin or user to access the object and modify its contents
+        admin.name = 'Pete';
+        console.log(user.name);
+
+
+        // two objects are equal only if they reference the same object
+
+        // if we really need to create a clone of an object (as oppposed to referencing the same object) we can iterate throught the object, creating a new object, one property at a time
+        // Or we can use Object.assign(dest, [src1, src2...])
+        // dest: target object
+        // src1 etc are source objects
+        // copies all properties of the source objects into the target
+
+        let permissions1 = { canView: true};
+        let permissions2 = { canEdit: true};
+
+        Object.assign(user, permissions1, permissions2);
+
+        console.log(user);
+
+        // can also do
+
+        let clone = Object.assign({}, user); // puts a clone of user into the empty object {}
+        clone.name = 'Adam';
+
+        console.log(clone);
+        console.log(user);
+
+        console.log('\n')
+
+        // Nesting
+        // properties of an object can reference other objects
+        let person = {
+            name: 'John'
+            , sizes: {
+                height: 74
+                ,waist: 32
+            }
+        };
+
+        console.log(person.sizes.height);
+
+        // if I ever need to clone an object inside an object, I'll google it
+
+
+
+
+
+    </script>
+</body>
+</html>

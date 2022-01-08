@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let user = {};
+        
+        let key = 'name';
+
+        user[key] = 'John'; // same as user.name = 'John'
+
+        // can also let the key be calculated at runtime
+
+        let user2 = {
+            name: 'John'
+            ,age: 27
+        };
+
+        let userKey = prompt('What do you want to know about user2?', 'name');
+
+        alert(userKey + ' is ' + user2[userKey]); // could also use dot notation here
+
+        
+
+    </script>
+</body>
+</html>

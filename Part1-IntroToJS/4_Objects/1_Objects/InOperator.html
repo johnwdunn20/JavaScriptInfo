@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let sister = {
+            name: 'Hannah'
+            ,age: 21
+            ,hair: 'red'
+        };
+
+        // in JS, if the property doesn't exist, it returns undefined:
+        console.log(sister.car);
+
+        // to test if a property exists, we can use "in" - returns true or false
+        console.log('name' in sister); // true b/c name exists
+        console.log('car' in sister); // false b/c car doesn't exist
+
+        // if we omit quotes to the left of "in" we are checking a variable to be tested. ie:
+        let key = 'name';
+        console.log(key in sister); // true b/c name exists in sister
+
+        // if a property exists but it stores "undefined" then:
+        let obj = {
+            test: undefined
+        };
+        console.log(obj.test); // undefined
+        console.log('test' in obj); // true
+
+        // but unless the property's value is undefined, the two above would return the same thing
+        // very rare example because we don't assign undefined to properties; would use null instead
+
+        
+        // For In loop
+        // used to walk over all keys of an object
+        // completely different from the for(;;) construct
+
+        for (let key in sister) {       // I don't think the "let" is necessary
+            console.log(key);
+            console.log(sister[key]);
+        }
+
+        // when looping through an object, integers (or anything that converts to an integer) get ordered whereas strings are in the order you put them into the object
+
+
+    </script>
+</body>
+</html>

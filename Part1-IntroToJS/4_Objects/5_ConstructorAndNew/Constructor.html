@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Constructor functions and the "new" operator allow us to create any similar objects
+        // Constructor functions are regular functions but convention says they are name with the first letter capitalized and they should be executed ONLY with the "new" operator
+        function User(name) {   // this function is a constructor function and should only be used with new
+            this.name = name;   // first "name" is the key, second is the parameter
+            this.isAdmin = false;
+        }
+
+        let user1 = new User('John');
+
+        console.log(user1);
+
+        // when a function is executed with new:
+            // 1. a new empty object is created and assigned to "this"
+            // 2. the function body executes - usually it modifies "this" / adds new properties to it
+            // 3. the value of "this" is returned
+
+        // the main purpose of constructors is to implement reusable object creation code
+
+        let user2 = new User('Andrew');
+
+        console.log(user2);
+
+        // if we do this:
+        let user3 = new function() {
+            this.name = 'Kenny';
+            this.isAdmin = false;
+        }
+        // then the constructor can't be called again because it isn't saved anywerhere - it's just created and called
+        // Realistically, would only be useful  if we're creating a single really complex object
+
+        // Consturctors usually don't have return statements. If they do and return is called with an object, then that object is returned instead of 'this'. If return is called with a primitive, then it's ignored and 'this' is returned
+        // Google this if I need it
+
+        // Methods in a Constructor
+        function Person(name, age) {
+            this.name = name;
+            this.age = age
+
+            this.sayHi = function() {
+                console.log('My name is ' + this.name + ' and I am ' + age + ' years old.')
+            }
+        }        
+
+        let adam = new Person('Adam', 30);
+
+        adam.sayHi();
+    </script>
+</body>
+</html>

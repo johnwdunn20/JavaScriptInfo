@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // constructor function
+        function Calculator() {
+            this.read = function() {
+                this.firstValue = +prompt('Enter your first value', '');
+                this.secondValue = +prompt('Enter your second value', '');
+                return this;    // will allow us to chain our method calls
+            }
+
+            this.sum = function() {
+                return this.firstValue + this.secondValue;
+            }
+
+            this.mul = function() {
+                return this.firstValue * this.secondValue;
+            }
+        }
+
+        // What would happen if first and second value weren't properties, would it still work?? they would then just be local variables
+
+        let myCalculator1 = new Calculator();
+
+        myCalculator1.read();
+
+        console.log(myCalculator1.sum());
+
+
+        let myCalculator2 = new Calculator();
+
+        let multiplyResult = myCalculator2.read().mul();
+        console
+
+        console.log(multiplyResult);
+
+    </script>
+</body>
+</html>

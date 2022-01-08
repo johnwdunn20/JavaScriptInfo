@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Object propety keys may be string type or symbol type - no other type is allowed
+        // a "symbol" represents a unique identifier
+        
+        // create a symbol with "Symbol()"
+        let id = Symbol();
+
+        // we can also give a symbol a description (aka a symbol name) that is useful when debugging
+        let id2 = Symbol('id');
+
+        // Symbols are always unique - the description is just a label that doesn't effect anything. So two different symbols can have the same description and they are not equal
+
+        // Symbols will not auto-convert to a string - most value is JS do have implicit conversion to strings (ie, when using them with an "alert" function)
+        
+        // alert(id); // will error
+        
+        // if we want to show a symbol, we need to explicitly call ".toString()"
+        alert(id2.toString());
+
+        debugger;
+        
+
+        // we can also use "symbol.description" to show the description only
+        alert(id2.description);
+
+        // Hidden Properties
+        // Symbols allow us to create "hidden" properties of an object that no other part of code can accidentally access or overwrite
+        // If we're working with "user" (ex below) objects that belong to a third-party code, we'd like to add identifiers to them without actually adding any fields to the code
+        let user = {
+            name: 'John',
+        };
+
+        let id3 = Symbol('id');
+
+        user[id3] = 1
+
+        alert(user[id3]);
+
+        // there will be no confilict between our symbol identifiers and the third-party's because symbols are always different even if they have the same name
+
+        let user2 = {
+            name: 'John'
+        }
+
+        user.id = 'Our id value'; // this is adding the STRING id, not the symbol. Don't do this
+
+        // but we cna use a symbol in an object literal ( the {}s ) by putting square brackets around it
+        let id4 = Symbol('id');
+
+        let user3 = {
+            name: 'John'
+            ,[id4]: 123
+        }
+
+
+        // Symbols are skipped in "for...in" loops
+        // Objects.keys(user) also ignores symbols
+        // but Object.assign copies both string and symbol properties
+            // b/c when cloning an object, we want ALL properties to be copied, including symbols
+
+        // Global symbols: when we want same-named symbols to be the same entities
+        // to create a global symbol, we use the global symbol registry where we can create symbols and access them later
+        
+        let myID = Symbol.for("id"); // if symbol doesn't already exist, it's created
+
+        let myID2 = Symbol.for("id");
+
+        console.log(myID == myID2); // true
+
+        // Symbol.for(key) returns a symbol by name (like above) and Symbol.keyFor(sym) returns a name by a global symbol (below)
+
+        console.log(Symbol.keyFor(myID));
+
+        
+        // System Symbols
+        // there are many - google for a full list
+
+        
+
+    </script>
+</body>
+</html>

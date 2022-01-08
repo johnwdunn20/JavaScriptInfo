@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        
+        let ladder = {
+            step: 0,
+            up() {
+                this.step++;
+                return this;    // adding "return this" allows us to chain methods calls
+            },
+            down() {
+                this.step--;
+                return this;
+            },
+            showStep() {
+                console.log(this.step);
+                return this;
+            }
+        }
+
+        ladder.up();
+        ladder.up();
+        ladder.showStep();
+        ladder.down();
+        ladder.showStep();
+
+        ladder.up().up().showStep();
+
+        // can also write it this way for readability:
+        ladder 
+            .up()
+            .up()
+            .showStep();
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "user strict";
+        // Actions are represented by by functions in properties - this is how an object can "act"
+        let user = {
+            name: 'John'
+            , age: 30
+        };
+
+        user.sayHi = function() {
+            console.log('Hi!');
+        };
+
+        user.sayHi();
+
+        // here we've used a Function Expression to create a fucntion and assign it to the property "user.sayHi" of the object
+        // a function that is a property of an object is called a method
+
+        // we can also a pre-declared function as a method:
+        // declaring our function:
+        function sayHello() {
+            console.log('Hello!');
+        };
+        // then add as a method:
+        user.sayHello = sayHello; // Note: no parentheses at the end of sayHello here (I think b/c we aren't calling the function, we;re assigning the function definition)
+
+        user.sayHello();
+
+        // writing code using objects to represent entities is object-oriented programming
+
+        // But the quickest way to write a method in an object literal is:
+        user2 = {
+            sayHi() {       // could also do "sayHi: function ()"
+                console.log('Hi');
+            }
+        }
+        
+
+        
+
+    </script>
+</body>
+</html>

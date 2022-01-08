@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // I'm not sure how important it is to understand all this and it is confusing
+        // Check out:
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive
+            // http://www.adequatelygood.com/Object-to-Primitive-Conversions-in-JavaScript.html
+
+        // when you add or subtract 2 objects or print the object with alert(obj), the objects are auto-converted to primitives
+            // Side Note: I think console.log is different as it really is a debugging tool
+
+        // All objects are true in a boolean context
+        // Numeric conversion happens when we subtract objects or apply mathematical functions (ie, subtracting 2 dates)
+        // String conversion usually happens when we output an object like alert(obj), a property key, or something similar (wherever a string is expected)
+
+
+        // ToPrimitive
+        // We can fine tune this string and numeric conversion with special object methods
+        // There are 3 variants of type conversion, so-called 'hints'
+            // string
+            // number
+            // default
+
+
+        let user = {
+            name: 'John',
+            money: 1000,
+
+            [Symbol.toPrimitive](hint) {
+                alert(`hint: ${hint}`);
+                return hint == 'string' ? `{name: "${this.name}"}` : this.money;
+            }
+        };
+
+            // Basically, "Symbol.toPrimitive" (used as a function value) specifies the data type the object property is returned as (when need to convert to a primitive)
+                // But JS will do it's best guess automatically so I'll come back to this if I need to learn more
+
+
+
+
+    </script>
+</body>
+</html>
