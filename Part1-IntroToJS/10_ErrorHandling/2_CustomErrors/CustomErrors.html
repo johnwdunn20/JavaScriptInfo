@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        
+        // we can create classses of errors
+            // and these classes can inherit from each other
+
+        // let's say we want to validate that the incomming JSON has the correct data
+
+        // we make our own error class, inheriting from Error (built in class):
+
+        class ValidationError extends Error {
+            constructor(message) {
+                super(message);     // calling the parent constructor
+                this.name = 'ValidationError'; // parent constructor sets name property so here we're resetting it
+            }
+        }
+
+        function readUser(json) {
+            let user = JSON.parse(json);
+
+            if (!user.age) {
+                throw new ValidationError('No field: age');
+            }
+            if (!user.name) {
+                throw new ValidationError('No field: name');
+            }
+
+            return user;
+        }
+
+        let json = '{"age": 25}';
+    
+        try{
+            let user = readUser(json)
+        } catch(err) {
+
+            if (err instanceof ValidationError) {
+                console.log('Invalid data: ' + err.message)
+            } else if (err instanceof SyntaxError) {
+                console.log('JSON Syntax Error; ' + err.message)
+            } else {
+                throw err;
+            }
+              
+        }
+
+
+        // we could also create a new class that inherits from ValidationError
+
+    </script>
+</body>
+</html>

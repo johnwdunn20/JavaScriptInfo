@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // try..catch
+
+        try {
+            console.log('Start of try runs');
+
+            lalalala; // error here so try doesn't finish
+
+            console.log('End of try runs');
+
+        } catch(err) {      // "err" - an error object with details about what happened
+            console.log(`An error occured`);
+            console.log(err);   
+
+            // Error objects have the following properties: message, name, stack
+            console.log(err.name);    
+            console.log(err.message);  
+            console.log(err.stack);     
+        }
+
+
+        // try..catch works synchronously so won't work if scheduled code (like setTimeout) errors in the try block
+            // for scheduled code to work with try catch, would need to put the try..catch inside the setTimeout
+
+
+        console.log('\n');
+        // Throwing our own errors
+
+        // we often want to use try..catch when getting json from a server
+            // if json is malformed, the script dies without a try..catch block
+
+        // here json is syntactically correct but doesn't have the name property
+        // we can throw our own errors
+
+        let json = '{ "age": 30}';
+
+        try {
+
+            let user = JSON.parse(json);
+            
+
+            if (!user.name) {
+                throw new SyntaxError('Incomplete data: no name')   // assigning the error message. "throw" operator immediately stops the try block and makes the Syntax Error whatever we specify
+                console.log('test')
+            }
+
+            console.log(user.name)
+
+        } catch(e) {
+            console.log('JSON Error: ' + e.message);     // just giving an alert, but we could do anything we want in the catch block (send a new network request, etc)
+        }
+
+
+        // the same way we created a custom SyntaxError, we could also create a custom Error or ReferenceError or others
+            // I think these are related to err.name, err.stack, etc
+            // b/c SyntaxError is clearly related to err.message
+
+
+
+        console.log('\n');
+        // Rethrowing - to account for when our try block has multiple errors
+            // rethrowsing is useful when it's an error that the standard errors don't know (like missing name in the example below)
+
+        // Rethrowing works like:
+            // 1. Catch gets all errors
+            // 2. in the catch block, we analyze the error object "err"
+            // 3. If we don't know how to handle it, we do "throw err"
+
+        let json2 = '{"age": 30}';
+
+        try {
+            let user = JSON.parse(json);
+
+            if (!user.name) {
+                throw new SyntaxError('Incomplete data: no name');
+            }
+
+            blablabla; // other error
+
+            console.log(user.name);
+
+        } catch(e) {
+            if (e instanceof SyntaxError) {
+                console.log('JSON Error: ' + e.message)
+            } else {
+                throw e;    // rethrow
+            }
+        }
+
+        // I don't fully get this but I want to move one.
+        // So look into rethrowing in the future
+
+
+        console.log('\n');
+        // try..catch..finally
+
+        // finally runs after try if there are no errors and after catch if there are errors
+        try {
+            alert( 'try' );
+                if (confirm('Make an error?')) BAD_CODE();
+            } catch (e) {
+                alert( 'catch' );
+            } finally {
+                alert( 'finally' );
+        }        
+
+
+        // variables are local inside try..catch..finally
+        // we could also use try..finally without the catch clause
+
+
+    </script>
+</body>
+</html>
