@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // We can assign a method to the class function itself, not its prototype
+        // static methods are methods of the whole class
+        // These are static methods:
+
+        class User {
+            static staticMethod() {
+                console.log(this === User);     // the value of "this" in "user.staticMethod()" is the class constructor "User"
+            }
+        }
+
+        User.staticMethod();
+
+        // so without "static" the methods are assigned to the prototype
+
+
+        // this is the same thing as assigning it as a property directly like:
+
+        class User2 {}
+
+        User2.staticMethod = function() {
+            console.log(this === User2);
+        }
+
+        User2.staticMethod();
+
+
+        // real example: a comparison method:
+
+        class Article {
+            constructor(title, date) {
+                this.title = title;
+                this.date = date;
+            }
+
+            static compare(articleA, articleB) {
+                return articleA.date - articleB.date;
+            }
+        }
+
+        // usage:
+
+        let articles = [
+            new Article('HTML', new Date(2019, 1, 1)),
+            new Article('CSS', new Date(2019, 0, 1)),
+            new Article('JavaScript', new Date(2019, 11, 1))
+        ];
+
+        articles.sort(Article.compare);
+
+        console.log(articles[0].title);
+
+        // "Article.compare" is not a method of an article but a method of the whole class so "this" is "Article"
+
+
+        console.log('\n');
+        // static properties are also possible:
+        
+        class Article2 {
+            static publisher = 'John Dunn';
+        }
+
+        // same as direct assignment:
+        Article2.publisher2 = 'Hannah Dunn'
+
+        console.log(Article2.publisher);
+        console.log(Article2.publisher2);
+
+
+        console.log('\n');
+        // Static properties and methods are inherited
+
+        class Animal {
+            static planet = 'Earth';
+
+            constructor(name, speed) {
+                this.speed = speed;
+                this.name = name;
+            }
+
+            run(speed = 0) {
+                this.speed += speed;
+                console.log(`${this.name} runs with speed ${this.speed}`);
+            }
+
+            static compare(animalA, animalB) {
+                return animalA.speed - animalB.speed;
+            }
+        }
+
+
+        class Rabbit extends Animal {
+            hide() {
+                console.log(`${this.name} hides`);
+            }
+        }
+
+        let rabbits = [
+            new Rabbit('White Rabbit', 10),
+            new Rabbit('Black Rabbit', 5)
+        ]
+
+        rabbits.sort(Rabbit.compare);
+
+        console.log(rabbits[0].speed)
+        rabbits[0].run();
+
+        console.log(Rabbit.planet)
+
+
+        // when we call Rabbit.compare, the inherited Animal.compare is called
+        // "extends" gives Rabbit the [[Prototype]] reference to Animal
+            // Rabbit function prototypally inherits from Animal function
+            // And Rabbit.prototype prototypally inherits from Animal.prototype
+
+
+    </script>
+</body>
+</html>

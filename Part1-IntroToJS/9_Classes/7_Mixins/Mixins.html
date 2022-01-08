@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // JS can only inherit from one object
+        // but we can use a "mixin" - a class containing methods that can be used by other classes without needing to inherit from it
+            // so a mixin provides methods that implement a certain behavior but we don't use it alone - we use it to add the behavior to other classes
+
+        // Mixin ex:
+
+        let sayHiMixin = {
+            sayHi() {
+                console.log(`Hello ${this.name}`);
+            },
+
+            sayBye() {
+                console.log(`Bye ${this.name}`);
+            }
+        }
+
+        // mixin usage:
+        class User {
+            constructor(name) {
+                this.name = name;
+            }
+        }
+
+        // copy the methods:
+        Object.assign(User.prototype, sayHiMixin)
+        
+        // now user can say hi:
+        new User('Dude').sayHi();
+
+        // there is no inheritance but a simple method copying
+        // so user could inherit from another class and also include the mixin methods
+
+
+        // other languages support multiple inheritance but JS doesn't. So we use mixins
+
+    </script>
+</body>
+</html>

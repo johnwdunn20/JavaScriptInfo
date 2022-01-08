@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // in object-oriented programming, properties and methods are split into 2 groups:
+            // Insernal Interface - methods and properties accessible from other methods of the class but not from the outside
+            // External Interface - methods and properties accessible from other methods of the class AND outside the class
+
+        // In JS there are 2 types of object fields (properties and methods):
+            // Public: accessible from anywhere (everything used up to this point)
+            // Private: accessible only from inside the class; these are for the internal interface
+
+
+        // ex:
+
+        class CoffeeMachine {
+            _waterAmount = 0;   // convention to begin protected properties with an underscore
+
+            set waterAmount(value) {
+                if (value < 0) {
+                    value = 0
+                }
+                this._waterAmount = value;
+            }
+
+            get waterAmount() {
+                return this._waterAmount;
+            }
+
+            constructor(power) {
+                this._power = power;
+                console.log(`Created a coffee-machine, power ${power}`);
+            }
+
+            get power() {           // making power read only
+                return this._power
+            }
+        }
+
+        let coffeeMachine = new CoffeeMachine(100);
+
+        coffeeMachine.waterAmount = -200;
+
+        console.log(coffeeMachine.waterAmount);     // waterAmout can't be below 0
+
+        //   coffeeMachine.power = 25;
+        // above line errors because we can't set power
+
+
+        // Note: protexted fields are inheritable
+
+
+
+        console.log('\n');
+        // Private
+            // Note - recent addition to JS so not supported in JS engines - need to be pollyfilled
+            // private properties start with "#" and are only accessible from isnside the class
+            // we could have private #waterAmount and public waterAmount - they are different
+            // unlike protected fields, private fields are enforced by the language itself
+
+
+
+        // in OOP, delimiting the internal interface from the external one is called encapsulation
+
+        
+
+    </script>
+</body>
+</html>

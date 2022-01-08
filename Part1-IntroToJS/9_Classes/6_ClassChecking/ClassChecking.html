@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // "instanceof" operator lets us check if an object belongs to a certain class (also takes inhertiance into account)
+            // useful if building a polymorphic function (ie a function that treates arguements differently depending on their type)
+            // "instanceof" cares about the prototype, not the function
+
+        // synatx: "obj instanceof Class"
+            // returns a boolean
+
+        // ex:
+
+        class Rabbit {}
+        let rabbit = new Rabbit();
+
+        console.log(rabbit instanceof Rabbit)
+
+        let arr = [1, 2, 3];
+        console.log( arr instanceof Array ); // true
+        console.log( arr instanceof Object ); // true
+            // both true b/c Array prototypically inherits from Object
+
+        
+
+
+
+    </script>
+</body>
+</html>

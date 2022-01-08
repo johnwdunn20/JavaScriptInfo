@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // class constructor is automatically called by "new" so we initialize the object there
+        // Note: no commas between class methods
+
+        class User {
+
+            constructor(name) {
+                this.name = name;
+            }
+
+            sayHi() {
+                console.log(this.name);
+            }
+        };
+
+        let user = new User('John');
+
+        user.sayHi();
+
+        // in JS, a class is a kind of function
+        console.log(typeof User);
+
+        // class methods are stored in User.prototype (or whatever the name of the calls is's prototype)
+        // there are some technical differences, but a class is a function where the methods are in the prototype:
+            // classes must be called with new (ie, calling "User()" will error)
+            // class methods are non enumarable
+            // code inside a class automatically uses strict mode, even if not specified at the top of the doc
+
+        
+        // Class Expressions
+        // just like functions, classes can be defined inside another expression, passed around, returned, assigned, etc
+
+        // ex: class expression wiht a name
+
+        let User2 = class MyClass{
+
+            sayHi() {
+                console.log('Hello');
+            }
+
+            sayClass() {
+                console.log(MyClass);
+            }
+        };
+
+        new User2().sayClass();    // returns the class defintion
+
+
+        console.log('\n');
+        // classes can also be dynamically "on-demand"
+
+        function makeClass(phrase) {
+            // declare a class and return it
+            return class {
+                sayHi() {
+                    console.log(phrase)
+                }
+            }
+        }
+
+        // create a new class
+
+        let test = makeClass('Hello');
+
+        new test().sayHi();
+
+
+
+        // just like literal objects, classes may include getters/setters, computed properties, etc
+            // methods, getters/setters are written to MyClass.prototype where MyClass is the name of the class
+
+
+
+        console.log('\n');
+        // Class fields
+            // a syntax that allows us to add properties
+
+        // Ex:
+
+        class User3 {
+            // class field
+            name = 'John';
+
+            sayHi() {
+                console.log(`Hi, ${this.name}!`);
+            }
+        }
+
+        new User3().sayHi();
+
+        // class fields are set on individual objects, not User2.prototype
+
+
+        // we can make bound methods with class fields
+            // ie, when using setTimeout, we lost the "this"
+
+        // class fields let us work around this by binding the method to the object"
+
+        class Button {
+            constructor(value) {
+                this.value = value;
+            }
+
+            // class field:
+            click = () => {
+                console.log(this.value)
+            }
+        }
+
+        // the class field "click = () => {...}" is created on a per-object basis so there's a seperate function for each "Button" object with "this" inside it referencing that object
+        // so we can pass "button.click" around anywhere and the value of "this" will always be correct
+
+        let button = new Button('Hello');
+
+        setTimeout(button.click, 100);  // hello
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

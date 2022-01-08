@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+
+        // class inheritance: extending one calss to another
+            // so Child.prototype.__proto__ = Parent.prototype
+
+        class Animal {
+            constructor(name) {
+                this.speed = 0;
+                this.name = name;
+            }
+            run(speed) {
+                this.speed = speed;
+                console.log(`${this.name} runs with speed ${this.speed}`);
+            }
+            stop() {
+                this.speed = 0;
+                console.log(`${this.name} stands still`);
+            }
+
+        }
+
+
+        // we can create Rabbit class and have it inherit Animal with "extends"
+            // so Animal is the parent of Rabbit
+
+        class Rabiit extends Animal {
+            hide() {
+                console.log(`${this.name} hides!`);
+            }
+        }
+
+        let rabbit = new Rabiit('White Rabbit');
+
+        rabbit.run(5);
+        rabbit.hide();
+
+        // Animal is Rabbit's prototype so if a method isn't found in Rabbit, it's taken from Animal
+            // note: rabbit's prototype is Rabbit
+
+        
+        console.log('\n');
+        // Overriding a method
+            // if Rabbit has a method that also exists in Animal, we take it from Rabbit
+            // but it's better to tweak a method than completely overwrite it. We do this with "super"
+                // "super.method(...)" to call a parent method
+                // "super(...)" to call a parent constructor (inside our constructor only)
+
+
+        // instead of Rabbit, using Bunny for this example
+
+        class Bunny extends Animal {
+            hide() {
+                console.log(`${this.name} hides!`);
+            }
+
+            stop() {        // Bunny stops also hides
+                super.stop();   // calls parent stop
+                this.hide();    // hides
+            }
+        }
+
+        let bunny = new Bunny('White Bunny');
+
+        bunny.stop();
+
+        // Note: arrow functions dont have "super"
+
+
+        console.log('\n');
+        // Overriding a constructor
+            // if a child doesn't have a constructor, it takes it from the parent
+
+
+        // we can override the constructor like:
+
+
+        class Rabbit2 extends Animal {
+
+            constructor(name, earLength) {
+                super(name);        // to get name from Animal
+                this.earLength = earLength;
+            }
+        }
+
+        let rabbit2 = new Rabbit2('My Rabbit', 10);
+        console.log(rabbit2.name);
+        console.log(rabbit2.earLength);
+
+
+        // Note: field names can be difficult to overwrite - look into this if I need it
+
+
+    </script>
+</body>
+</html>
