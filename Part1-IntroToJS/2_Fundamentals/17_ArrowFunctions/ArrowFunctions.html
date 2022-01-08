@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Arrow functions are another way to declare a function:
+        let sum = (a, b) => a + b;
+        
+        console.log(sum(1,2));
+
+        // if we only have one arguement, we don't need the parentheses around it:
+        let double = n => n * 2;
+
+        console.log(double(6));
+
+        // if no arguements, parentheses should be present but will be empty
+        let sayHi = () => alert('Hello');
+
+        // Arrow functions can be used in the same way as Function Expressions:
+        let age = prompt('What is your age?', 18)
+
+        let welcome = (age < 18) ?
+            () => alert('Hello') :
+            () => alert('Greetings');
+
+        welcome();
+
+        // We can also use Arrow Functions with multiple lines with curly braces:
+        
+        let subtract = (a, b) => {
+            let result = a - b;
+            return result; // if we use curly braces, then we need to explicitly say what we return
+        }
+        
+        console.log(subtract(1,2));
+
+    </script>
+</body>
+</html>

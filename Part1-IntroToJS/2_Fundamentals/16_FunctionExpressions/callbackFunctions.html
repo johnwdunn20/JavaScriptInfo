@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Callback functions: pass a function and expect it to be called back later
+        // Ex: 
+
+        function ask(question, yes, no) {
+            if (confirm(question)) {   // note: yese() could be on the same line without the curly braces
+                yes();
+            } else {
+                no();
+            }
+        }
+
+        ask(
+            "Do you agree?"
+            , function() {
+                alert('you agreed.');
+            }
+            , function() {
+                alert('You canceled');
+            }
+        )
+
+        // we are declaring functions inside the ask function call
+        // these are anonymous functions because they aren't assigned to variables
+            // anonymous functions aren't available outside of where they are declared
+
+
+
+
+    </script>
+</body>
+</html>

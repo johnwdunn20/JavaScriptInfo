@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // previous section used function declarations
+        // function expressions create and assign the function to a variable explicitly
+        let sayHi = function() {
+            console.log('Hello');
+        };
+
+        sayHi(); // calls the function
+        console.log(sayHi); // prints out function code
+
+        // in JS, a function is a value - it's string representation is its source code
+        // b/c a function is a value, we can work with it like other value
+        // copy it to another variable:
+        let myFunc = sayHi;
+
+        myFunc();
+
+        // in the above example, if it were let myFun = sayHi() we would be copying the value the function returns, not the function itself
+
+        // so let sayHi = function() {code here} is the same as function sayHi() {code here}
+
+        // Note: Function Expressions should end with semicolons
+
+    </script>
+</body>
+</html>

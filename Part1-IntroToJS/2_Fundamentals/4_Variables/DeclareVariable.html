@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // create a variable with the "let" keyword:
+        let message;
+        // add data with assignment operator "="
+        message = "Hello"; // storing this string
+        // the string is now saved into the memory area associated with the variable
+        // we can access it with the variable name:
+        alert(message);
+
+        // can also combine variable declaration and assignment into a single line:
+        let message2 = 'Hi';
+        alert(message2);
+
+        // we can also define variables like this:
+        let user = 'John'
+            , age = 27
+            , state = 'Idaho';
+
+        // older scripts use "var" instead of "let"
+
+        // we can change the value of a variable
+        message2 = 'yo';
+
+        // Or copy data from one variable to another
+        let message3 = message2;
+        alert(message3);
+
+        // variables can only contain letters, digits, $, or _ and the first character can't be a digit
+        // these are valid:
+        let $ = 1
+            , _ = 2;
+
+        // JS is case sensitive
+        // can't use reserved words as variable names
+
+        // when not in strict mode, you could declare a variable without "let" or "var" but it's bad practice
+
+        // To declare a constant (unchanging variable) use "const"
+        const myBirthday = '04.12.1993';
+        // Attempting to resign a constant will cause an error
+
+        // Best practice is to use all uppercase for constants that are variables known prior to execution
+        // For example, orange hexadecimal value is always the same and is know before run time
+        const COLOR_ORANGE = 'FF7F00';
+
+        // But a constant like the time it takes the page to load isn't known before run time so we write it with normal camelCase
+        const pageLoadTime = 1
+
+        
+
+    </script>
+</body>
+</html>

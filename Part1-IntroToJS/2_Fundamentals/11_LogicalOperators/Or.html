@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // there are 3 logical operators in JS: || (OR), && (AND), ! (NOT)
+
+        // OR: ||
+        let a, b;
+        let result = a || b;
+        // if a or b is true, result is true
+
+        // in a lot of languages, logical OR can only manipulate boolean values
+        // If an operand is not a boolean, it's converted to a boolean for evaluation (ie, 1 is true, 0 is false)
+            // this is fairly classical and JS does work like this
+
+        // but if we have multiple ORs:
+        let value1, value2, value3;
+        let result2 = value1 || value2 || value3
+        // then JS evaluates from left to right, converting each operand to boolean.
+        // If the result is true, it returns the original value of that operand (so the first operand b/c only need one to be true)
+        // If the result is false (ie all operands are false), then it returns the last operand
+        // In both cases, the value is returned in its original form without conversion
+
+        //Ex: (truthy means the value is true (not sure if this is a real CS term))
+        console.log(1 || 0); // 1 (1 is truthy)
+        console.log(null || 1); // 1 (1 is the first truthy value)
+        console.log(null || 0 || 1); // 1 (1 is the first truth value)
+        console.log(undefined || null || 0); // 0 (all are falsy so returns the last value)
+        // so it seems like this is just added functionality b/c if all are falsy, you still get a falsy value returned so would be false in an if statement
+
+        // Short-Circuit Evaluation: b/c OR processes its arguements until the first truthy value is reached and the the value is returned immediately without touching the other arguements
+            // we can use an operand that isn't just a value but an expressions with a side effect (variable assignment, function call, etc)
+            // so this will execute commands only if the condition on the left part is falsey, ie: true || alert('yes')
+
+
+
+
+    </script>
+</body>
+</html>

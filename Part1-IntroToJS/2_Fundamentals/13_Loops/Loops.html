@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // while loop: 
+        let i = 0;
+        
+        while (i < 3) {
+            console.log(i);
+            i++;
+        }
+        // iterates while true so if the condition is 0 (or anything falsey) it stops, ie "while (0)" won't run
+        // a single execution of the loop is an iteration
+
+        // do while loop:
+        i = 0;
+        do {
+            console.log(i);
+            i++;
+        } while (i < 3);
+        // only use do while loops when you want the body of the loop to execute at least once regardless of the condition being true
+
+        // for loop: "for (begin; condition; step)"
+        for (let b = 0; b < 3; b++) {
+            console.log(b);
+        }
+        // when we declare the variable in the loop like above, it's called inline variable declaration and then the variable only exists inside the loop
+        // but you can also use an existing variable:
+        let a = 0;
+        for (a; a < 3; a++) {
+            console.log(a);
+        }
+        // now we can still access a:
+        console.log(a);
+        // note that a is now one higher than it was in the loop we printed
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Boolean is the result of a comparison operator (>, <, <=, =>, !=, ==, ===, !==)
+
+        // String comparison is lexicographical aka compared letter by letter
+        // use unicode so lowercase comes before (aka has a greater index) than the letter's uppercase counterpart
+
+        // when comparing different types, JS converts the values to numbers
+
+        // == is equality and = is assignment
+        // === is strict equality, compares value and type (so JS doesn't convert the values to numbers)
+        console.log(0 == false) // true
+        console.log('' == false) // true
+        console.log(0 === false) // false
+        // !=== is "strict non-equality" operator
+
+        // undefined compared to anything is always false because undefined gets converted to NaN
+
+        // Basically, just treat any comparison with null/undefined and not strict equality (===) carefully
+
+    </script>
+</body>
+</html>

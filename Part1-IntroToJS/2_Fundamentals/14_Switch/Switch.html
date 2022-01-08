@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // the switch statement can replcae multiple if checks
+        // has one or more case blocks and an optional default
+        let x = 4;
+        switch(x) {
+            case 3: 
+                console.log('Too Small');
+            case 4: 
+                console.log('Exactly');
+            case 5:
+                console.log('Too large');
+            default:
+                console.log('I do not know');
+        }
+
+        // value of x is checked for strict equality to the values in the case statements
+        // if the equality is found, switch executes the code until the next break
+        // so in the above example, everything from case 4 and below executes becasue we have no break statement
+        // ex with breaks:
+        switch(x) {
+            case 3: 
+                console.log('Too Small');
+                break;
+            case 4: 
+                console.log('Exactly');
+                break;
+            case 5:
+                console.log('Too large');
+                break;
+            default:
+                console.log('I do not know');
+        }
+        // so without the breaks, we should order cases from most specific to most general, I think
+
+        // we can also group case statements
+        // here, the same code runs for case 4 and case 5:
+        let y = 3;
+        switch(y) {
+            case 4: 
+                console.log('Right');
+                break;
+            
+            case 3:         // x = 3 so goes until case 5 because there's no break under case 3
+            case 5: 
+                console.log('Wrong');
+                break;
+
+            default: 
+                console.log('other');
+        }
+
+        // with switch statements, the equality check is strict (===) so type matters
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let userNum = 1;
+        
+        while (userNum <= 100) {
+            userNum = prompt('Enter a number greater than 100', '');
+            console.log(userNum);
+            if (userNum == false )  {
+                console.log(`if ${userNum} ${typeof(userNum)}`);
+                break;
+            } else {
+                console.log(`else ${userNum} ${typeof(userNum)}`);
+            }
+        }
+    </script>
+</body>
+</html>

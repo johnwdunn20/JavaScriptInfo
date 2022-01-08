@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let year = prompt('What year is it?');
+        if(year == 2020) {
+            console.log('Yes, it is 2020');
+        }
+        // if statement evaluates the expression in parentheses and converts the result to boolean
+        // so if true, it executes, if false, it doeesn't
+
+        // we can also pass a pre-evaluated boolean value to if:
+        let cond = (year == 2015); // evaluates to cond = ture
+        if (cond) {
+            console.log('yes');
+        }
+
+        // else executes if condition is fales
+        if (year = 2015) {
+            console.log('2015');
+        } else {
+            console.log('not 2015');
+        }
+
+        // else if:
+        if (year < 2020) {
+            console.log('past');
+        } else if (year > 2020) {
+            console.log('future');
+        } else {
+            console.log('present')
+        }
+        
+        // conditional operator "?" (sometimes called a ternary because the operator has 3 operands
+        // so we could write this:
+        let accessAllowed;
+        let age = 30;
+
+        if (age > 18) {
+            accessAllowed = true;
+        } else {
+            accessAllowed = false;
+        }
+
+        console.log(accessAllowed);
+
+        // but we can shorten this with ?
+        // format is: let result = condition ? [value if true] : [value if false];
+        let accessAllowed2 = (age > 18) ? true : false;
+        console.log(accessAllowed2);
+        
+        // note: don't need the parentheses around "age > 18" but it does make it more readible
+        // also, the above example doesn't really need the ? because age > 18 will evaluate to a boolean anyway. But would need it for this:
+        let accessAllowed3 = (age > 18) ? 'adult' : 'child';
+        console.log(accessAllowed3);
+
+        // Multiple ?s
+        // you can use multipel ?s to return a value that depends on more than one condition:
+        let myAge = 27;
+
+        let message = (age < 3) ? 'Hi, baby!' :
+            (age < 18) ? 'Hello!' : 
+            (age < 100) ? 'Greetings!' : 
+            'What an unusual age!';
+
+        console.log(message)
+
+        // It's basically like nested if statements in Excel
+
+        // Non-traditional use of ? - ? can be used as a replacement for if but it's not recommended
+        // purpose of ? operator is to return one value or another depending on it's condiiton, don't use it to execute different branches of code
+
+
+    </script>
+</body>
+</html>

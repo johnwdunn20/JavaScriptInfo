@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Nullish Coalescing operator
+        // Note: This is a recent addition to JS so may not work in old broswers (might need pollyfills instead??)
+        // For now, we'll say an expression is "defined" when it's neither null nor undefined
+
+        // the nullish coalescing operator is written as two question marks: ??
+        // Ex: a ?? b -> if a is defined (not null or undefined), then a, if not, then b
+        // ?? returns the first arguement that's not null/undefined
+        // so
+        let a, b, result;
+        result = a ?? b;
+        // is the same as:
+        result = (a !== null && a !== undefined) ? a : b;
+        // ?? is used to provide a default value for a potentially undefined variable (so it's just coalescing the)
+        // ex:
+        let user, friend;
+        console.log(user ?? friend ?? 'unknown'); // unknown
+
+        // but with the way || works, we could just use it instead in some cases
+        // the difference is || returns the first truthy value and ?? returns the first defined value (ie, 0 or false is defined but not truthy)
+
+        // If I need to use this, look up the precedence
+        // can't use ?? with && or || unless you explicitly define it with parentheses
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // usually operators and functions automatically convert the values given to them to the right type
+        // but we can explicitly covert values if we'd like:
+        let x = 0;
+        let xStr = String(x);
+        console.log(typeof(xStr));
+        let xNum = Number(xStr);
+        // if string isn't a valid number, we'll get NaN. If string is null, we'lll get 0
+        console.log(typeof(xNum));
+
+        // Boolean conversion: 0, an empty string, null, undefinied, and NaN become false
+        // All others are true
+        console.log(Boolean(xNum) + ': ' + typeof(xNum)); // false because xNum is a number and equals 0
+        console.log(Boolean(xStr) + ': ' + typeof(xStr)); // true because xNum is a string and isn't empty
+        
+    </script>
+</body>
+</html>

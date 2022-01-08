@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // whitespace doesn't matter in JavaScript
+        // A variable can change data types which means JavaScript is "dynamically typed". Ex:
+        let message = 'hello';
+        message = 1234;
+
+        // number type represents both integer and floating point numbers
+        // Besides regular numbers, there are "special numerica values"
+            // Infinity: can get it by dividing by 0 or by calling it directly:
+            alert(1/0);
+            alert(Infinity);
+
+            //Nan: represents a computational error. Ex:
+            alert('hi' / 5);
+            // so mathematical errors in JS won't cause a fatal error, it will just return NaN
+
+            // BigInt: for numbers that are bigger/smaller than +/- 2^53 -1
+            // BigInt is created by appending "n" to the end of an integer
+            const bigNumber = 234122354324213432423123143298787908709870914432143243214n;
+            alert(bigNumber);
+        
+        // String: surrounded by quotes (can use single quotes, double quotes, or backticks)
+        // Single and double quotes are the same
+        // Backticks are extended functionality quotes and allow us to embed variables/expressions into a string by wrapping them in ${...}
+        let name = 'John'
+        // embedding a variable:
+        alert(`Hello, ${name}!`);
+        // embedding an expression:
+        alert(`the result is ${1 + 2}`);
+        
+        // Boolean (logical type): true or false
+        let isUserJohn = true;
+
+        // Booolean values come as the result of comparisons:
+        let isGreater = 4 > 1;
+        alert(isGreater);
+
+        // null: in JS, null is not a reference to a non-existing object or a null pointer; it represents nothing, empty, or value unknown
+        let age = null;
+
+        // undefined: means value is not assigned
+        // if a variable is declared but not assigned, then its value is undefined
+        let sister;
+        alert(sister);
+        // you could assign a value to undefined, but it's best to keep undefined for declared variables that don't have an initial value
+
+        // Object type: used to store collections of data / more complex entities
+        // other types are "primitive" because their values can only contain one single thing
+        
+        // symbol: used to create unique identifiers for objects
+
+        // typeof operator: returns the type of the arguement
+        // 2 formats: as an operator and as a function - both work the same and return a string with the type name
+        //operator:
+        typeof name;
+        //function
+        typeof(name);
+        // typeof(null) will return "object" even though it's not really an object
+
+
+
+
+        
+    </script>
+</body>
+</html>

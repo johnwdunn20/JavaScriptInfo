@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Breaking the looop
+        let sum = 0;
+        while (true) {
+            let value = +prompt("Enter a number", ''); // + in front converts it to a number
+
+            if (!value) { // if false I think
+                break;
+            }
+            sum += value;
+        }
+        alert('Sum ' + sum);
+    </script>
+</body>
+</html>

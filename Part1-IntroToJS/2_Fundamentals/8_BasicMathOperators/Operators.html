@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // Operand is what the operators are applied to, ie 5 * 2 has 2 operands
+        // an operator is unary if it has a single operand, ie x = -y
+        // an operator is binary if it has 2 operands, ie 5 * 2
+        // % - remainder
+        // ** - exponents
+
+        // if + operator is applied to strings, it concats them:
+        let message = 'hello' + 'you';
+        // if any operands are strings, it concats them
+        let message2 = (1 + 2 + '3'); // 33, not 6 or 123 b/c 1+2 = 3 +'3' = 33
+        console.log(message2)
+
+        // operands other than + always convert the string to a Number
+        console.log('5' - 2); // 3
+
+        // + operator will convert non Numbers to numbers if there's only one operand. Ex:
+        console.log(+true)
+        console.log(+'7')
+
+        // Operator precedence: unary operators are higher than their corresponding binary ones:
+        let x = +'7' + +'1' // = 8
+
+        // Chaining Assignments
+        let a, b, c;
+        a = b = c = 2 + 2;
+        // all a, b, and c equal 4
+        // expressions are evaluated from right to left
+
+        // Modify in place +=, *= -=, and /=
+        let n = 2;
+        n *= 3 + 5; // =16
+
+        // incrememnt and decrement
+        n++;
+        n--;
+        // prefix vs postfix, ie ++n vs n++ :
+        // this is kinda weird, google if needed
+
+        //Bitwise operators - just know they exists, I can google them if need be
+
+        // Commas: allow us to evaluate several expressions divided by a comma. All expresssions are evaluated, but only the last one is returned
+        // Not commonly used, but sometimes in JS frameworks - if it comes up, google it
+
+
+
+
+    </script>
+</body>
+</html>

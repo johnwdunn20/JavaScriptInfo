@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p> Before the Script...</p>
+    <script>
+        console.log('Hello World');
+
+    </script>
+    <!-- To use an external file:-->
+    <script src="HelloWorld.js"></script>
+
+    <!-- The src can also be a URL-->
+    <!-- And you can use as many script src tags as you want, ie:-->
+    <script src="HelloWorld.js"></script>
+    <script src="HelloWorld.js"></script>
+    <!-- Realistically, these 2 would be different files-->
+
+    <!-- You can't put both the src and the -->
+    <!-- Generally, all but the simplest scripts will be in another file-->
+    <!-- If you put JS and src in the same script tag, JS code will be ignored-->
+    <p> After the Script...</p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // AND (&&)
+            // opoerates left to right
+            // for each operand, converts to boolean
+            // if the result is false, it stops and returns the original value of the operand
+            // if all operands are truthy, returns the last operand
+        // so AND returns the first falsy value while OR returns the first truthy one
+        // so if we use it with an "if" statement and all are true, returns the last value, which will be true
+
+        console.log(false && true); // false
+        console.log(1 && 0); // 0
+
+        console.log(null && 5); // null
+        console.log(5 && 7 && 8); // 8
+
+        console.log(1 && 0 && 'yes'); //0
+        
+        // The precendence of AND && is higher than OR ||
+        // so these two are effectively the same thing:
+        let a, b, c, d;
+        console.log(a && b || c && d);
+        console.log((a && b) || (c && d));
+        
+        // Don't replace "if" with || or &&
+        // Ex:
+        let x = 1;
+        (x > 0) && console.log('Greater than 0');
+        // vs.
+        if (x > 0) console.log('Greater than 0');
+        // I should use the second one because it's more clear what's going on
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // contine stops the current iteration and continues onto the next
+        for (let i = 0; i < 10; i++) {
+            if (i % 2 == 0) {
+                continue;
+            }
+            console.log(i)
+        }
+
+        // we can't use continue with ?
+        // another reason it's better to use if than ?
+
+        // Labels for break/continue:
+        // a label is an identifier with a colon before a loop
+        // it lets us choose what loop we want to break out of
+        outer: for (let i = 0; i < 5; i++) {
+
+            for (let j = 0; j < 3; j++) {
+                let input = prompt(`Value at coordinates (${i},${j})`,''); // remember to use the third type of quote for template literals
+
+                if (!input) {
+                    break outer; // breaks ouf of both the inner loop and the outer loop
+                }
+            }
+        }
+
+        // the label can also be on a line above the for loop, ie:
+        myloop: 
+        for (let i = 0; i < 3; i++) {
+            break myloop;
+        }
+
+        // continue can also be used with a label
+
+        // Note: labels don't allow us to jump into an arbitrary place in the code
+            // a call to break/continue is only possible fron inside a loop and the label must be somewhere above the directive
+
+
+
+    </script>
+</body>
+
+</html>
