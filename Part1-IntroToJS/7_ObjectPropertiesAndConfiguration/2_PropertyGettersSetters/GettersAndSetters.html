@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // data properties are the properties we used in Property Flags and Descriptors
+
+        // there are also accessor properties: functions that execute on getting and setting a value but look like regular properties to an external code
+
+
+        let user = {
+            name: 'John',
+            surname: 'Dunn',
+
+            get fullName() {
+                return `${this.name} ${this.surname}`;
+            }
+        }
+
+        // here we add fullName as an accessor property because otherwise, we would need to copy and paste existing info
+        // from the outside this accessor property looks like a regular property: we cdon't call "user.fullName" as a function, we read it normally
+
+        console.log(user.fullName);     // not calling as a function becasue no "()"
+
+        // without a setter, we can't set fullName to a value outside the object
+
+        // to fix this, we add a setter:
+        let user2 = {
+            name: 'John',
+            surname: 'Dunn',
+
+            get fullName() {
+                return `${this.name} ${this.surname}`;
+            },
+
+            set fullName(value) {
+                [this.name, this.surname] = value.split(' ');
+            }
+        }        
+
+        // now we have a virtual property: "fullName" is readable and writable
+
+        user2.fullName = 'Alice Cooper';
+
+        console.log(user2.name);
+        console.log(user2.surname);
+
+
+        console.log('\n');
+        // Accessor Descriptors
+        // Descriptors for accessor properties are different from those of data properties. Accessor properties may have:
+            // get - a function w/o arguments that works when a property is read
+            // set - a function with one arguement that is called when the property is set
+            // enumarable - same as for data properties
+            // configurable - same as for data properties
+
+        // to create an accessor fullName with defineProperty, we can pass a descriptor with get and set
+
+
+        console.log('\n');
+        // Getters and setters can be used as wrappers over "real" property values to gain more control over them
+        // Ex: make sure name is not too short:
+
+        let user3 = {
+            get name() {
+                return this._name;  // widely known convention that properties starting with an underscore are internal and should not be touched from outside the object
+            },
+
+            set name(value) {
+                if (value.length < 4) {
+                    console.log('Name is too short');
+                    return;
+                }
+                this._name = value;
+            }
+        }
+
+        user3.name = 'Ab';  // "Name is too short"
+
+        user3.name = 'Abby';
+
+        console.log(user3.name);
+
+
+        console.log('\n');
+        // Using Accessor properties for compatibility
+        // Accessor properties can allow us to take control over a regular data property ay any moment by replacing it with a getter and a setter and tweaking its behavior
+        // Ex:
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        let john = new Person('John', 27);
+
+        console.log(john.age);
+
+        // now instead of age, we want to use birthday:
+        function Person2(name, birthday) {
+            this.name = name;
+            this.birthday = birthday;
+
+            // age is calculated from the current date and birthday:
+            Object.defineProperty(this, 'age', {
+                get() {
+                    let todayYear = new Date().getFullYear();
+                    return todayYear - this.birthday.getFullYear();
+                }
+            });
+
+        }
+
+        let hannah = new Person2('Hannah', new Date(1999, 8, 23));
+
+        console.log(hannah.birthday);
+        console.log(hannah.age);
+
+        
+        
+    </script>
+</body>
+</html>

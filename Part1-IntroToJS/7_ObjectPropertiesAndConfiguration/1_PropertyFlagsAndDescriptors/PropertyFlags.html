@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // object properties can be more than just a simple key-value pair
+
+        // object properties, besides a value, have 3 special attributes (called 'flags')
+            // writable - if true, value can be changed. if false, is read-only
+            // enumerable - if true, listed in loops; if false, not listed
+            // configurable - if true, the property can be deleted and these attributes can be modified. If false, not
+
+        // when we create a property the usual way all of them are true
+
+        // to get the full info about a property:
+        // syntax: let descriptor = Object.getOwnPropertyDescriptor(obj, propertyName)
+
+        let user = {
+            name: 'John'
+        };
+
+        let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+
+        console.log(descriptor);
+
+        // to make it a string:
+        console.log(JSON.stringify(descriptor, null, 2));
+
+
+        console.log('\n');
+        // to change the flags, we use: Object.defineProperty(obj, propertyName, descriptor)
+            // if the property exists, defineProperty updates its flags
+            // otherwise it creates the property with the given flags. If a flag isn't supplied, it's assumed to be false
+
+        let user2 = {};
+
+        // name created with all falsy flags:
+        Object.defineProperty(user2, 'name', {
+            value: 'John'
+            // writable: false
+        });
+
+        let descriptor2 = Object.getOwnPropertyDescriptor(user2, 'name');
+
+        console.log(JSON.stringify(descriptor2, null, 2));
+
+        // user2.name = 'Pete';  
+            // this errors, but only in strict mode
+
+        
+        // making a property non-enumarable can be useful when you don't want an object method to be available in your for...in loop
+
+
+        // Non-configurable sometimes exists for built-in objects and properties
+            // ie, you can't change the value of Math.pi
+            // and you can't change anything about a non-configurable object
+
+
+        // Object.definProperties(obj, descriptors) lets us define many properties at once
+
+        // Object.getOwnPropertyDescriptors(obj) lets us get all property descriptors at once
+
+        // can also seal an object globally - google this syntax if I need it
+            // rarely used in practice
+
+
+    </script>
+</body>
+</html>
